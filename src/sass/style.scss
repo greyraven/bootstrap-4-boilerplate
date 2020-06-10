@@ -20,6 +20,10 @@ body {
 }
 .bannerImg {
   background-image: url(https://i1.wp.com/westfax.com/wp-content/uploads/2020/05/man-showing-distress-2.png?fit=2560%2C636&ssl=1);
+  max-height: 530px;
+}
+.subBannerA {
+  background-color: #212529;
 }
 .white {
   color: #ffffff;
@@ -28,4 +32,11 @@ body {
   font-weight: 400;
   padding-top: 10px;
   font-size: 26px;
+}
+.mediumFont {
+  font-size: 20px;
+}
+.colorBoxLight {
+  background-color: #ffffff;
+  width: auto;
 }
