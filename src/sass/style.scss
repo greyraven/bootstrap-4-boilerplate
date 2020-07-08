@@ -1,33 +1,30 @@
 $theme-colors: (
-  "primary": #ff3a52,
+  "primary": #b4232d,
   "dark": #000000
 );
 
 @import "node_modules/bootstrap/scss/bootstrap";
 
 body {
-  padding-top: 56px;
   font-family: "Open Sans", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-.footer {
-  margin-top: 3rem;
-}
+
 .navbar {
   border-bottom: 1px solid #eee;
+  font-weight: bold;
+  color: #111111;
+}
+a.nav-link {
+  color: #111111 !important;
 }
 .lato {
   font-family: Lato, HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .bannerImg {
-  background-image: url(https://i1.wp.com/westfax.com/wp-content/uploads/2020/05/man-showing-distress-2.png?fit=2560%2C636&ssl=1);
+  background-color: #222222 !important;
   max-height: 530px;
 }
-.subBannerA {
-  background-color: #212529;
-}
-.white {
-  color: #ffffff;
-}
+
 .lead {
   font-weight: 400;
   padding-top: 10px;
@@ -36,7 +33,81 @@ body {
 .mediumFont {
   font-size: 20px;
 }
+
+/* Pricing Tables */
+
+section.pricing {
+  background: #ffffff;
+  background: linear-gradient(to right, #eeeeee, #ffffff);
+}
+
+.pricing .card {
+  border: none;
+  border-radius: 1rem;
+  transition: all 0.2s;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.pricing hr {
+  margin: 1.5rem 0;
+}
+
+.pricing .card-title {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+}
+
+.pricing .card-price {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.pricing .card-price .period {
+  font-size: 0.8rem;
+}
+
+.pricing ul li {
+  margin-bottom: 1rem;
+}
+
+/* Color options */
+.redFax {
+  color: #b4232d;
+}
 .colorBoxLight {
   background-color: #ffffff;
   width: auto;
+}
+.subBannerA {
+  background-color: #212529;
+}
+.white {
+  color: #ffffff;
+}
+.grey {
+  color: #cccccc;
+}
+/*HEADER*/
+
+.wideMenu {
+  min-width: 300px;
+}
+
+/*FOOTER*/
+footer a {
+  color: #ffffff !important;
+}
+.footer {
+  margin-top: 3rem;
+}
+
+/* ICON TWEAKS */
+.fa-exchange-alt {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
