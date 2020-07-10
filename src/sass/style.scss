@@ -112,17 +112,22 @@ footer a {
   transform: rotate(90deg);
 }
 
-#partnerships-bg-img {
-  background-attachment: fixed;
-  background-image: url("/img/partnerships.jpg");
+#partnerships-jumbotron,
+#our-company-jumbotron,
+#our-network-jumbotron {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-#clouds-bg-img {
-  background-attachment: fixed;
-  background-image: url("/img/bluesky1-1.jpeg");
+#partnerships-jumbotron {
+    background-image: url('/img/partnerships.jpg');
 }
 
-#server-bg-img {
-  background-attachment: fixed;
-  background-image: url("/img/server-rack-img.jpg");
+#our-company-jumbotron {
+    background-image: url("/img/bluesky1-1.jpeg");
+}
+
+#our-network-jumbotron {
+    background-image: url("/img/server-rack-img.jpg");
 }
