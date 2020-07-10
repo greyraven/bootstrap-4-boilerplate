@@ -111,3 +111,18 @@ footer a {
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }
+
+#partnerships-bg-img {
+  background-attachment: fixed;
+  background-image: url("/img/partnerships.jpg");
+}
+
+#clouds-bg-img {
+  background-attachment: fixed;
+  background-image: url("/img/bluesky1-1.jpeg");
+}
+
+#server-bg-img {
+  background-attachment: fixed;
+  background-image: url("/img/server-rack-img.jpg");
+}
