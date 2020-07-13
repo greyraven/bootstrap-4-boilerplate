@@ -1,33 +1,35 @@
+const browserSync = require("browser-sync").create();
+const clean = require("gulp-clean");
+const concat = require("gulp-concat");
+const cssmin = require("gulp-cssmin");
 const gulp = require("gulp");
 const gulpIf = require("gulp-if");
-const browserSync = require("browser-sync").create();
-const sass = require("gulp-sass");
 const htmlmin = require("gulp-htmlmin");
-const cssmin = require("gulp-cssmin");
-const uglify = require("gulp-uglify");
-const imagemin = require("gulp-imagemin");
-const concat = require("gulp-concat");
-const jsImport = require("gulp-js-import");
-const sourcemaps = require("gulp-sourcemaps");
 const htmlPartial = require("gulp-html-partial");
-const clean = require("gulp-clean");
-const isProd = process.env.NODE_ENV === "prod";
+const imagemin = require("gulp-imagemin");
+const jsImport = require("gulp-js-import");
+const sass = require("gulp-sass");
+const sitemap = require("gulp-sitemap");
+const sourcemaps = require("gulp-sourcemaps");
+const uglify = require("gulp-uglify");
 
 const htmlFile = ["src/*.html"];
+const isProd = process.env.NODE_ENV === "prod";
+console.log(isProd);
 
 function html() {
   return gulp
     .src(htmlFile)
     .pipe(
       htmlPartial({
-        basePath: "src/partials/"
+        basePath: "src/partials/",
       })
     )
     .pipe(
       gulpIf(
         isProd,
         htmlmin({
-          collapseWhitespace: true
+          collapseWhitespace: true,
         })
       )
     )
@@ -40,7 +42,7 @@ function css() {
     .pipe(gulpIf(!isProd, sourcemaps.init()))
     .pipe(
       sass({
-        includePaths: ["node_modules"]
+        includePaths: ["node_modules"],
       }).on("error", sass.logError)
     )
     .pipe(gulpIf(!isProd, sourcemaps.write()))
@@ -53,7 +55,7 @@ function js() {
     .src("src/js/*.js")
     .pipe(
       jsImport({
-        hideConsole: true
+        hideConsole: true,
       })
     )
     .pipe(concat("all.js"))
@@ -62,14 +64,30 @@ function js() {
 }
 
 function img() {
-  return gulp.src("src/img/*").pipe(gulpIf(isProd, imagemin())).pipe(gulp.dest("docs/img/"));
+  return gulp
+    .src("src/img/*")
+    .pipe(gulpIf(isProd, imagemin()))
+    .pipe(gulp.dest("docs/img/"));
 }
 
 function serve() {
   browserSync.init({
     open: true,
-    server: "./docs"
+    server: "./docs",
   });
+}
+
+function createSitemap() {
+  return gulp
+    .src("./src/*.html", {
+      read: false,
+    })
+    .pipe(
+      sitemap({
+        siteUrl: "http://www.westfax.com/",
+      })
+    )
+    .pipe(gulp.dest("./docs"));
 }
 
 function browserSyncReload(done) {
@@ -94,5 +112,6 @@ exports.css = css;
 exports.html = html;
 exports.js = js;
 exports.del = del;
+exports.createSitemap = createSitemap;
 exports.serve = gulp.parallel(html, css, js, img, watchFiles, serve);
-exports.default = gulp.series(del, html, css, js, img);
+exports.default = gulp.series(del, html, css, js, createSitemap, img);
