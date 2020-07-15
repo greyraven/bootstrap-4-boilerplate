@@ -112,12 +112,17 @@ footer a {
   transform: rotate(90deg);
 }
 
+#contact-us-jumbotron,
 #partnerships-jumbotron,
 #our-company-jumbotron,
 #our-network-jumbotron {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+#contact-us-jumbotron {
+  background-image: url('/img/contact-us_bg-img.jpg');
 }
 
 #partnerships-jumbotron {
