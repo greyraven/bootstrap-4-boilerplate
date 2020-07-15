@@ -1,0 +1,129 @@
+<partial src="header.html" title="WestFax | HIPAA Compliant Fax Faq"></partial>
+
+<style>
+    #faq-list {
+        list-style-type: none;
+    }
+
+    #faq-list>li {
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+
+    li>span#question {
+        font-weight: bold;
+    }
+    
+    li>span#answer {
+        color: #6c757d;
+    }
+</style>
+
+<section class="container mx-auto mt-4 mb-4 row">
+    <div class="col-md-9">
+        <h1>HIPAA Compliant Fax FAQ</h1>
+        <p class="lead text-muted">If you can’t find an answer to your question please
+            <a href="https://westfax.com/contact/">contact us</a>.
+        </p>
+
+        <div>
+            <ul id="faq-list" class="px-0">
+                <li>
+                    <span id="question">Q: What is HIPAA?</span> <br>
+                    <span id="answer">A: HIPAA (Health Insurance Portability and Accountability Act of 1996) is United States legislation that provides data privacy and security rules for safeguarding medical information.</span>
+                </li>
+                <li>
+                    <span id="question">
+                        Q: What is a BAA?
+                    </span> <br>
+                    <span id="answer">
+                        A: A “business associate” is a person or entity that performs certain functions or activities that involve the use or disclosure of protected health information on behalf of, or provides services to, a covered entity.  A member of the covered entity’s workforce is not a business associate.  A covered health care provider, health plan, or health care clearinghouse can be a business associate of another covered entity. (
+                            <a href="https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/business-associates/index.html">learn more</a>)
+                    </span>
+                </li>
+                <li>
+                    <span id="question">Q: Many digital fax platforms won’t sign a BAA. Will WestFax sign a BAA?</span> <br>
+                    <span id="answer">A: Yes. WestFax will sign a Business Associate Agreement. Contact us to discuss your requirements. Our BAA agreement satisfies the Health and Human Services (HSS) standards for Health Information Privacy (HIP). (<a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/sample-business-associate-agreement-provisions/index.html">https://www.hhs.gov/</a>) </span>
+                </li>
+                <li>
+                    <span id="question">Q: What is a HIPAA Compliant Fax?</span> <br>
+                    <span id="answer">
+                        A: A “HIPAA Compliant Fax” is not some new fax format. Sending a fax in a HIPAA compliant way requires that a fax have an appropriate cover sheet, that the receivers number is the verified and the coversheet has a standard HIPAA Disclaimer that is pretty standard. There are also rules around audit trails and secure storage of the digital faxes as well.
+                    </span>
+                </li>
+                <li>
+                    <span id="question">Q: We use an ERM, Can you integrate Fax into our workflow?</span> <br>
+                    <span id="answer">A: Yes, We can integrate into any ERM. It starts with something as simple as Print to Fax driver and we can also perform custom integration into your ERM using our HIPAA Compliant Secure Fax API. Please <a href="contact-us.html">contact us</a> for more information.</span>
+                </li>
+                <li>
+                    <span id="question">
+                        Q: Do you have an API we can integrate with?
+                    </span> <br>
+                    <span id="answer">
+                        A:  Yes, We offer a robust HIPAA Compliant Secure Fax API. Go here to learn more about our <a href="api.html">API</a> and sign up here. 
+                    </span>
+                </li>
+                <li>
+                    <span id="question">Q: Can I get Customer Service help if I need it?</span> <br>
+                    <span id="answer">A: Yes. Our in-house account managers are experienced professionals with years of service to the company. There is virtually no request they can’t handle. Our turnaround time for large custom merge orders is unmatched in the industry.</span>
+                </li>
+                <li>
+                    <span id="question">Q: Do I need to buy any software or hardware?</span> <br>
+                    <span id="answer">A: No. You only need Internet access or email capability.</span>
+                </li>
+                <li>
+                    <span id="question">Q: What kind of security do you have at your Datacenter?</span> <br>
+                    <span id="answer">A: Our highly secure Tier III data centers maintain SSAE16 SOC 2 Certifications to provide physical control of your ePHI data. The facility utilizes fingerprint scanning and video surveillance. Redundant and fault tolerant power and HVAC systems ensuring system performance and availability. Redundant internet connections and carrier class firewalling and security. Comprehensive compliance support that includes FISMA High / NIST 800-53, HIPAA, PCI-DSS Level 1, SOC 2 Type II, and SOC 3.</span>
+                </li>
+                <li>
+                    <span id="question">Q: How secure is your HIPAA Compliant Fax Service?</span> <br>
+                    <span id="answer">A: We utilize the highest level of TLS encryption available for data in transit either through our secure website or secure API interfaces. We also use AES 256 bit encryption of ePHI data to guarantee privacy and prevent disclosure from intrusion. We support TLS protected SMTP email with optional REQUIRE TLS extension in accordance with the IETF RFC 3207. FTPS and SFTP with TLS for safe and secure transport of documents to and from your existing servers. Comprehensive HTTPS API allows for easy and flexible integration of systems.</span>
+                </li>
+                <li>
+                    <span id="question">Q: What are your acceptable document formats?</span> <br>
+                    <span id="answer">A: Word, PDF, Tiff, Excel, Publisher and Powerpoint.</span>
+                </li>
+                <li>
+                    <span id="question">Q: What are your acceptable list formats?</span> <br>
+                    <span id="answer">A: Delimited text files including CSV, and Tab Delimited.  We also accept and DBF database formats.</span>
+                </li>
+                <li>
+                    <span id="question">Q: How do I sign up?</span> <br>
+                    <span id="answer">A: Contact a WestFax Sales Representative at 1-800-473-6208 or use our <a href="broadcast-fax-signup.html">Getting Started form</a>.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <h2 class="text-center">Have a question not listed?</h2>
+        <form class="form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text">
+            </div>
+            <div class="form-group">
+                <label for="name">Topic</label>
+                <select class="form-control" id="topSelection">
+                    <option>API</option>
+                    <option>HIPAA Fax</option>
+                    <option>Broadcast Fax</option>
+                    <option>Fax to Email</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question">Question <sup>*</sup></label>
+                <textarea class="form-control" name="Question" id="question" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" type="email" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">If you'd like an email response.</small>
+            </div>
+            <button class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</section>
+
+<partial src="footer.html"></partial>
