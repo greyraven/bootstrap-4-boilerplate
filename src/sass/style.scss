@@ -143,3 +143,20 @@ footer a {
       font-size: 20px;
     }
 }
+
+#tc-list {
+  list-style-type: upper-alpha;
+  li {
+    font-weight: bold;
+
+    p {
+      font-weight: 400;
+    }
+  }
+
+  .product-text {
+    color: #111;
+    font-style: italic;
+    font-weight: bold;
+  }
+}
