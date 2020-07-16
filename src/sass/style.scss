@@ -113,6 +113,7 @@ footer a {
 }
 
 #contact-us-jumbotron,
+#hipaa-pricing-jumbotron,
 #partnerships-jumbotron,
 #our-company-jumbotron,
 #our-network-jumbotron {
@@ -135,6 +136,10 @@ footer a {
 
 #our-network-jumbotron {
     background-image: url("/img/server-rack-img.jpg");
+}
+
+#hipaa-pricing-jumbotron {
+  background-image: url("/img/hipaa-pricing-top-banner-img.jpg");
 }
 
 #api-faq-list {
