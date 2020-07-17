@@ -116,6 +116,7 @@ footer a {
 #contact-us-jumbotron,
 #hipaa-pricing-jumbotron,
 #partnerships-jumbotron,
+#print-to-fax-jumbotron,
 #our-company-jumbotron,
 #our-network-jumbotron {
     background-position: center;
@@ -133,6 +134,10 @@ footer a {
 
 #partnerships-jumbotron {
     background-image: url('/img/partnerships.jpg');
+}
+
+#print-to-fax-jumbotron {
+  background-image: url('/img/printtofax-jumbotron-bg.jpg');
 }
 
 #our-company-jumbotron {
