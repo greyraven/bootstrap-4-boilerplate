@@ -112,6 +112,7 @@ footer a {
   transform: rotate(90deg);
 }
 
+#broadcast-fax-jumbotron,
 #contact-us-jumbotron,
 #hipaa-pricing-jumbotron,
 #partnerships-jumbotron,
@@ -120,6 +121,10 @@ footer a {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+#broadcast-fax-jumbotron {
+  background-image: url('/img/broadcast-fax-logo-bg.png');
 }
 
 #contact-us-jumbotron {
