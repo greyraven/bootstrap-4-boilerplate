@@ -114,6 +114,7 @@ footer a {
 
 #broadcast-fax-jumbotron,
 #contact-us-jumbotron,
+#cbf-jumbotron,
 #hipaa-pricing-jumbotron,
 #partnerships-jumbotron,
 #print-to-fax-jumbotron,
@@ -130,6 +131,10 @@ footer a {
 
 #contact-us-jumbotron {
   background-image: url('/img/contact-us_bg-img.jpg');
+}
+
+#cbf-jumbotron {
+    background-image: url('/img/create-bf-account-banner-img.jpg')
 }
 
 #partnerships-jumbotron {
@@ -149,7 +154,7 @@ footer a {
 }
 
 #faxtools-jumbotron {
-  background-image: url("/img/faxtools-jumbotron-bg.png");  
+  background-image: url("/img/faxtools-jumbotron-bg.png");
 }
 
 #hipaa-pricing-jumbotron {
