@@ -113,6 +113,7 @@ footer a {
 }
 
 #broadcast-fax-jumbotron,
+#broadcast-fax-signup-jumbotron,
 #contact-us-jumbotron,
 #cbf-jumbotron,
 #hipaa-pricing-jumbotron,
@@ -127,6 +128,10 @@ footer a {
 
 #broadcast-fax-jumbotron {
   background-image: url('/img/broadcast-fax-logo-bg.png');
+}
+
+#broadcast-fax-signup-jumbotron {
+  background-image: url('/img/broadcast-fax-signup-banner.png');
 }
 
 #contact-us-jumbotron {
