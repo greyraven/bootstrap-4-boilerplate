@@ -116,6 +116,7 @@ footer a {
 #broadcast-fax-signup-jumbotron,
 #contact-us-jumbotron,
 #cbf-jumbotron,
+#developer-registration-jumbotron,
 #hipaa-pricing-jumbotron,
 #partnerships-jumbotron,
 #print-to-fax-jumbotron,
@@ -140,6 +141,10 @@ footer a {
 
 #cbf-jumbotron {
     background-image: url('/img/create-bf-account-banner-img.jpg')
+}
+
+#developer-registration-jumbotron {
+  background-image: url('/img/developer-registration-banner-bg.jpg');
 }
 
 #partnerships-jumbotron {
