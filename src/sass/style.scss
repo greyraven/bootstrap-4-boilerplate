@@ -120,6 +120,7 @@ footer a {
 #hipaa-pricing-jumbotron,
 #partnerships-jumbotron,
 #print-to-fax-jumbotron,
+#right-fax-alternative-jumbotron,
 #our-company-jumbotron,
 #our-network-jumbotron {
     background-position: center;
@@ -147,6 +148,14 @@ footer a {
   background-image: url('/img/developer-registration-banner-bg.jpg');
 }
 
+#our-company-jumbotron {
+    background-image: url("/img/bluesky1-1.jpeg");
+}
+
+#our-network-jumbotron {
+    background-image: url("/img/server-rack-img.jpg");
+}
+
 #partnerships-jumbotron {
     background-image: url('/img/partnerships.jpg');
 }
@@ -155,12 +164,8 @@ footer a {
   background-image: url('/img/printtofax-jumbotron-bg.jpg');
 }
 
-#our-company-jumbotron {
-    background-image: url("/img/bluesky1-1.jpeg");
-}
-
-#our-network-jumbotron {
-    background-image: url("/img/server-rack-img.jpg");
+#right-fax-alternative-jumbotron {
+  background-image: url("/img/rightfax-meme.png");
 }
 
 #faxtools-jumbotron {
