@@ -11,6 +11,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,900;1,400&display=swap"
         rel="stylesheet" />
         <script src="https://kit.fontawesome.com/e0b5a20ab0.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
+        crossorigin="anonymous"></script>
         <title>WestFax | Create Broadcast Fax Account</title>
         <meta name="description"
         content="@@metadesc" />
@@ -23,6 +25,7 @@
               gtag("js", new Date());
               gtag("config", "UA-000000000-1");
         </script>
+        <!-- Duplicate script? -->
         <script src="https://kit.fontawesome.com/e0b5a20ab0.js" crossorigin="anonymous"></script>
     </head>
     
@@ -108,7 +111,7 @@
               <i class="fa fa-question-circle"></i>
               BROADCAST FAX FAQ</a>
 
-                            <div class="dropdown-divider"></div> <a class="dropdown-item" href="utility.html">
+                            <div class="dropdown-divider"></div> <a class="dropdown-item" href="area-code-map.html">
               <i class="fa fa-map"></i>
               AREA CODE MAP</a>
 
@@ -128,17 +131,58 @@
                     <li class="nav-item"> <a href="blog.html" class="nav-link">BLOG</a>
 
                     </li>
-                    <li class="nav-item"> <a href="login.html" class="nav-link mr-2">LOGIN</a>
+                    <li class="nav-item dropdown"> <a href="" class="nav-link dropdown-toggle mr-2" data-toggle="dropdown"
+                        role="button" aria-haspopup="true" aria-expanded="false">LOGIN</a>
 
-                    </li>
-                    <li class="nav-item"> <a href="register.html" class="nav-link btn btn-md btn-primary mr-2"><span
-              class="text-white">REGISTER</span></a>
+                        <div
+                        class="dropdown-menu rounded-0"> <a class="dropdown-item" href="https://order.westfax.com/Login.aspx">Broadcast Fax Login</a>
 
-                    </li>
-                </ul>
+                            <a
+                            class="dropdown-item" href="https://home.westfax.com/app/login/show">Fax to Email Login</a>
+            </div>
+            </li>
+            <li class="nav-item"> <a href="" class="btn btn-md btn-primary dropdown-toggle mr-2 nav-link rounded-0"
+                data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="text-white">SIGN UP</span></a>
+
+                <div
+                class="dropdown-menu rounded-0"> <a class="dropdown-item" href="broadcast-fax-signup.html">Broadcast Fax</a>
+
+                    <a
+                    class="dropdown-item" href="pricing.html">Business Fax</a> <a class="dropdown-item" href="hipaa-pricing.html">HIPAA Secure Fax</a>
+
+                        </div>
+            </li>
+            <button id="search-toggler" class="btn btn-sm btn-white"> <span>
+            <i class="fa fa-search"></i>
+          </span>
+
+            </button>
+            <form class="form-inline my-2 my-lg-0" id="search-form" hidden>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            </ul>
             </div>
         </nav>
     </body>
+    <script>
+        var searchFormHidden = true;
+        
+          $(document).ready(() => {
+              var searchForm = $('#search-form')[0];
+            $('#search-toggler').on('click', (event) => {
+              event.preventDefault();
+              if (searchFormHidden == true) {
+                searchForm.removeAttribute('hidden');
+                searchFormHidden = false;  
+              } else {
+                searchForm.setAttribute('hidden', '');
+                searchFormHidden = true;
+              }
+            })
+          })
+    </script>
 
 </html>
 <section class="jumbotron" id="cbf-jumbotron">
