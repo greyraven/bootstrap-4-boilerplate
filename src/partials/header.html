@@ -135,7 +135,7 @@
         </button>
         <form class="form-inline my-2 my-lg-0" id="search-form" hidden>
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn btn-outline-white my-2 my-sm-0" type="submit"><i class="text-primary fa fa-search"></i></button>
         </form>
       </ul>
     </div>
@@ -146,12 +146,13 @@
   var searchFormHidden = true;
 
   $(document).ready(() => {
-      var searchForm = $('#search-form')[0];
+    var searchForm = $('#search-form')[0];
+
     $('#search-toggler').on('click', (event) => {
       event.preventDefault();
       if (searchFormHidden == true) {
         searchForm.removeAttribute('hidden');
-        searchFormHidden = false;  
+        searchFormHidden = false;
       } else {
         searchForm.setAttribute('hidden', '');
         searchFormHidden = true;

@@ -205,3 +205,18 @@ footer a {
     font-weight: bold;
   }
 }
+
+form#search-toggle {
+  position: fixed;
+  margin-right: 2rem;
+}
+
+form#search-form {
+  background: #fefefe;
+  box-shadow: 0px 3px 13px 0px rgba(0,0,0,.2);
+  padding: .6em;
+  position: absolute;
+  top: 80px;
+  right: 1vw;
+  z-index: 1;
+}
