@@ -15,7 +15,7 @@ body {
   color: #111111;
 }
 a.nav-link {
-  color: #111111 !important;
+  color: #111111;
 }
 .lato {
   font-family: Lato, HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -102,7 +102,8 @@ footer a {
 .footer {
   margin-top: 3rem;
 }
-
+.nav-link-white {
+}
 /* ICON TWEAKS */
 .fa-exchange-alt {
   -webkit-transform: rotate(90deg);
@@ -124,49 +125,49 @@ footer a {
 #right-fax-alternative-jumbotron,
 #our-company-jumbotron,
 #our-network-jumbotron {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #broadcast-fax-jumbotron {
-  background-image: url('/img/broadcast-fax-logo-bg.png');
+  background-image: url("/img/broadcast-fax-logo-bg.png");
 }
 
 #broadcast-fax-signup-jumbotron {
-  background-image: url('/img/broadcast-fax-signup-banner.png');
+  background-image: url("/img/broadcast-fax-signup-banner.png");
 }
 
 #contact-us-jumbotron {
-  background-image: url('/img/contact-us_bg-img.jpg');
+  background-image: url("/img/contact-us_bg-img.jpg");
 }
 
 #cbf-jumbotron {
-    background-image: url('/img/create-bf-account-banner-img.jpg')
+  background-image: url("/img/create-bf-account-banner-img.jpg");
 }
 
 #developer-registration-jumbotron {
-  background-image: url('/img/developer-registration-banner-bg.jpg');
+  background-image: url("/img/developer-registration-banner-bg.jpg");
 }
 
 #fax-to-email-jumbotron {
-  background-image: url('/img/fax-to-email-banner-bg.jpg');
+  background-image: url("/img/fax-to-email-banner-bg.jpg");
 }
 
 #our-company-jumbotron {
-    background-image: url("/img/bluesky1-1.jpeg");
+  background-image: url("/img/bluesky1-1.jpeg");
 }
 
 #our-network-jumbotron {
-    background-image: url("/img/server-rack-img.jpg");
+  background-image: url("/img/server-rack-img.jpg");
 }
 
 #partnerships-jumbotron {
-    background-image: url('/img/partnerships.jpg');
+  background-image: url("/img/partnerships.jpg");
 }
 
 #print-to-fax-jumbotron {
-  background-image: url('/img/printtofax-jumbotron-bg.jpg');
+  background-image: url("/img/printtofax-jumbotron-bg.jpg");
 }
 
 #right-fax-alternative-jumbotron {
@@ -183,9 +184,9 @@ footer a {
 
 #api-faq-list {
   height: auto;
-    li {
-      font-size: 20px;
-    }
+  li {
+    font-size: 20px;
+  }
 }
 
 #tc-list {
