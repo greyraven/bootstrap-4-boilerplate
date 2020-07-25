@@ -128,37 +128,9 @@
             <a class="dropdown-item" href="hipaa-pricing.html">HIPAA Secure Fax</a>
           </div>
         </li>
-        <button id="search-toggler" class="btn btn-sm btn-white">
-          <span>
-            <i class="fa fa-search"></i>
-          </span>
-        </button>
-        <form class="form-inline my-2 my-lg-0" id="search-form" hidden>
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-white my-2 my-sm-0" type="submit"><i class="text-primary fa fa-search"></i></button>
-        </form>
       </ul>
     </div>
   </nav>
 </body>
-
-<script>
-  var searchFormHidden = true;
-
-  $(document).ready(() => {
-    var searchForm = $('#search-form')[0];
-
-    $('#search-toggler').on('click', (event) => {
-      event.preventDefault();
-      if (searchFormHidden == true) {
-        searchForm.removeAttribute('hidden');
-        searchFormHidden = false;
-      } else {
-        searchForm.setAttribute('hidden', '');
-        searchFormHidden = true;
-      }
-    })
-  })
-</script>
 
 </html>
