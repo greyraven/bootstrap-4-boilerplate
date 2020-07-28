@@ -1,0 +1,139 @@
+<partial src="header.html" title="API Parameters and Return values [decoded] | WestFax API"></partial>
+
+<section class="container mx-auto mb-4 mt-4" id="blog-post">
+
+    <div class="mb-4" id="blog-title">
+        <h1>API PARAMETERS AND RETURN VALUES [DECODED]</h1>
+        <a href="https://westfax.com/category/blog/" class="text-muted">BLOG</a>
+    </div>
+
+    <div class="text-muted">
+        <p>
+            Unless you are deep diving into the SDK you may miss some of the <a
+                href="https://www.geeksforgeeks.org/enum-in-java/">enum values</a> that are useful for implementing the
+            API. What are Enums? Basically they are a list of values that can be used as an input value for a web
+            service or they are presented as output values. If you need to trap a particular output or status these
+            values are key for proper error trapping and flow in your application.
+        </p>
+
+        <p>
+            We’ll look at the most frequently used API calls and break down the values allowed and returned. Is there
+            another API call you want documentation for or need to know more? <a href="mailto:develop@westfax.com">Let
+                us know</a>.
+        </p>
+    </div>
+
+    <div>
+        <h2>
+            <strong><a
+                    href="https://apidocs.westfax.com/?version=latest#329863fe-37b7-46b4-bee4-507949664be2">Fax_SendFax</a></strong>
+        </h2>
+        <hr>
+        <div class="row">
+            <div class="col-lg">
+                <h3>
+                    Input Parameters
+                </h3>
+                <ul>
+                    <li>FaxQuality - <strong>Fine</strong> or <strong>Normal</strong></li>
+                </ul>
+            </div>
+            <div class="col-lg">
+                <h3>Ouput Values</h3>
+                <ul>
+                    <li>
+                        <strong>Success</strong> - <strong>True</strong> or <strong>False</strong>
+                    </li>
+                    <li>
+                        <strong>Result</strong> - 0000000-0000-0000-0000 {JobId} or
+                        if failed it will return an <strong>ErrorString</strong> and <strong>InfoString</strong> which
+                        will have detailed failure information
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h2><strong><a
+                    href="https://apidocs.westfax.com/?version=latest#2a448185-e072-4810-b9bc-f234c3ef4d9b">Fax_GetFaxDescriptionsUsingIds</a></strong>
+        </h2>
+        <hr>
+        <div class="row">
+            <div class="col-lg">
+                <h3>Input Parameters</h3>
+                <ul>
+                    <li>
+                        <strong>FaxIds1..3</strong>
+                        <div>
+                            <pre><code>
+{
+    "Id": "28887ac4-424d-4164-9def-ca5e926342d8",
+    "Direction": "Outbound"
+}
+                            </code></pre>
+                        </div>
+                        <p>Include the jobId and the Direction which can be <strong>Inbound</strong> or
+                            <strong>Outbound</strong></p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg">
+                <h3>Output Values</h3>
+                <ul>
+                    <li>
+                        <strong>Success</strong> - <strong>True</strong> or <strong>False</strong>
+                    </li>
+                    <li>
+                        <p><strong>Result</strong> - Can be a JSON Object</p>
+                        <div>
+                            <pre><code>
+{
+    "Success": true,
+    "Result": [{
+        "FaxCallInfoList": [{
+            "CallId": "00000-00000-000000-0000",
+            "CompletedUTC": "2019-12-05T15:11:06Z",
+            "TermNumber": "000000000",
+            "OrigNumber": "2225551212",
+            "OrigCSID": "(222) 555-1212",
+            "Result": "NoAnswer"
+        }],
+    "Id": "00000-00000-000000-0000",
+    "Date": "2019-12-05T15:11:33Z",
+    "Direction": "Outbound",
+    "Tag": "Retrieved",
+    "PageCount": 1,
+    "FaxQuality": "Normal",
+    "Status": "Complete"
+    }]
+}
+    
+Result can be: {
+    Success,
+    Dialing,
+    Removed,
+    BadNumber,
+    Busy,
+    NoAnswer,
+    NoFaxDevice,
+    Cancelled,
+    Failed,
+    InvalidNumber,
+    Unknown
+}
+                            </code></pre>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <span class="text-muted">
+        January 23, 2020 /
+    </span>
+
+</section>
+
+<partial src="footer.html"></partial>
