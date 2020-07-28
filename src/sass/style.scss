@@ -94,7 +94,21 @@ section.pricing {
 .wideMenu {
   min-width: 300px;
 }
-
+.grey-header {
+  font-size: 1em;
+  color: #dddddd;
+  font-weight: bold;
+}
+.fa-10r {
+  padding-right: 10px;
+}
+.fa-2r {
+  padding-right: 2px;
+}
+.menu-regular {
+  font-size: 1em;
+  font-weight: bold;
+}
 /*FOOTER*/
 footer a {
   color: #ffffff !important;
@@ -213,8 +227,8 @@ form#search-toggle {
 
 form#search-form {
   background: #fefefe;
-  box-shadow: 0px 3px 13px 0px rgba(0,0,0,.2);
-  padding: .6em;
+  box-shadow: 0px 3px 13px 0px rgba(0, 0, 0, 0.2);
+  padding: 0.6em;
   position: absolute;
   top: 80px;
   right: 1vw;
