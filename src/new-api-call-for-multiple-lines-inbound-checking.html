@@ -1,0 +1,115 @@
+<partial src="header.html" title="API How-to: Checking for new faxes via API when you have multiple faxes"></partial>
+
+<section class="container mx-auto mb-4 mt-4" id="blog-post">
+    <div id="blog-title" class="mb-4">
+        <h1>WESTFAX API HOWTO: CHECKING FOR NEW INBOUND FAXES WITH NEW FUNCTION.</h1>
+        <div>
+            <a class="text-muted" href="https://westfax.com/category/blog/">BLOG</a>,
+            <a class="text-muted" href="https://westfax.com/category/help/">HELP</a>
+        </div>
+    </div>
+
+    <div class="text-muted">
+        <div>
+            <h2 class="text-dark">Here is what we are going to do:</h2>
+            <ol>
+                <li>Check for new faxes using a new api call: <a
+                        href="https://apidocs.westfax.com/?version=latest#a358336f-a25a-42fa-a144-d77288170852">Fax_GetProductsWithInboundFaxes</a>
+                </li>
+                <li>Get a collection of inbound faxes for us to process.</li>
+            </ol>
+        </div>
+
+        <div>
+            <h2 class="text-dark">Here is what you need:</h2>
+            <ol>
+                <li>
+                    We will assume you are using a relatively modern development framework. PHP, React, .Net, etc…
+                </li>
+                <li>
+                    We recommend you use a tool like <a href="https://www.getpostman.com/">Postman</a> (Free and
+                    available on all platforms) to test your API’s and generate the code or you can run in a sandbox at
+                    <a href="https://app.swaggerhub.com/apis-docs/WestFax2/WestFax_API_2/2.0-oas3#/">SwaggerHub</a>.
+                </li>
+                <li>
+                    <a href="developer-registration.html">Developer API Account</a> Easy to sign up and get started
+                    immediately.
+                </li>
+                <li>
+                    If you haven’t implemented the API before you may want to check out our quickstart how-to articles
+                    <a href="https://westfax.com/how-to-add-the-westfax-api-into-your-enterprise-application/">here</a>
+                    and <a href="https://westfax.com/how-to-add-send-a-fax-via-api-with-callback-function/">here</a>.
+                </li>
+            </ol>
+        </div>
+
+        <div>
+            <h3 class="text-dark">What is this useful for:</h3>
+            <p>
+                This is useful if you have multiple inbound fax lines and you need to check them for new inbound faxes.
+                Just calling this one procedure will alert you to new inbound faxes and you can then go and retrieve the
+                metadata about the new faxes. If nothing is new you don’t have to make a call for each productID which
+                saves server time and resources.
+            </p>
+        </div>
+
+        <div>
+            <h4>
+                <strong>Phase 1: Let’s check our Fax number for new faxes.</strong>
+            </h4>
+            <p>
+                In this case I have sent myself a test fax before I run this proc.
+            </p>
+            <p>
+                I am going to fire up SwaggerHub and use the Tryout function to call the procedure and get data back.
+            </p>
+            <p>
+                The procedure is called Fax_GetProductsWithInboundFaxes. You can see it’s spec <a
+                    href="https://app.swaggerhub.com/apis-docs/WestFax2/WestFax_API_2/2.0-oas3#/Core/FaxGetProductsWithInboundFaxesRespEncPost">here</a>.
+            </p>
+
+            <img width="600px" src="img/new-api-call-image.png" class="img-fluid mt-2 mb-2">
+        </div>
+
+        <div>
+            <ol class="text-muted">
+                <li>
+                    We’ll be asked to enter the Username and Password for our WestFax API Call. Notice we are not
+                    specifying a prodid as this procedure works across all fax lines and will return a collection of fax
+                    lines if the filter field matches.
+                </li>
+                <li>
+                    Let’s talk about the filter field. If you leave it blank it will assume Unread flag. You can set it
+                    to None, Recieved & Removed. None or <blank> will show you Fax numbers that have unread faxes.
+                        Recieved will show you fax lines that have read faxes and removed will show you faxes that have
+                        deleted faxes. These are unlikely use-cases but here nevertheless.
+                </li>
+
+                <li>
+                    <p>So here is the call</p>
+                    <img width="600px" src="img/new-api-call-image-2.png" class="img-fluid mt-2 mb-2">
+                </li>
+
+                <li>
+                    <p>When I execute it I get back:</p>
+                    <img width="600px" src="img/new-api-call-image-3.png" class="img-fluid mt-2 mb-2">
+                </li>
+
+                <li>
+                    You can see that it returns a ID record as well as the InboundNumber so you can now go call the
+                    Fax_GetFaxDescriptions or Fax_GetInboundFaxDescriptions. Set your FaxDirection as Inbound and you
+                    can now update your app with the new incoming faxes.
+                </li>
+            </ol>
+        </div>
+
+        <p>
+            <strong>Success!</strong> As you can see it’s not hard at all to add Faxing to your Enterprise application.
+            If you have questions or need more help please reach out to us at <a href="tel:800-473-6208">800-473-6208</a> or <a href="contact.html">contact us via email</a>.
+        </p>
+    </div>
+
+    <span class="text-muted">
+        December 19, 2019 /
+    </span>
+</section>
