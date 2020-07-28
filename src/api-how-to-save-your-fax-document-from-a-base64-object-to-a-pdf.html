@@ -1,0 +1,197 @@
+<partial src="header.html" title="How to download and save your fax document from the API - WestFax"></partial>
+
+<section class="container mx-auto mb-4 mt-4" id="blog-post">
+    <div class="mb-4" id="blog-title">
+        <h1>API HOW-TO: SAVE YOUR FAX DOCUMENT FROM A BASE64 OBJECT TO A PDF</h1>
+        <!-- Maybe instead of Uncategorized it could be Documentation -->
+        <a href="https://westfax.com/category/uncategorized/" class="text-muted">UNCATEGORIZED</a>
+    </div>
+
+    <div class="text-muted">
+        <p>
+            This article assumes the following:
+        </p>
+        <ul>
+            <li>You have a <a href="developer-registration.html">Westfax API Account</a></li>
+            <li>
+                You have some experience <a href="how-to-add-send-a-fax-via-api-with-callback-function.html">sending a
+                    fax using the WestFax API</a>
+            </li>
+        </ul>
+
+        <p>
+            Sending a fax is easy as you may have already discovered, but what about retrieving a fax document for an
+            inbound fax?
+        </p>
+
+        <p>
+            In this article we’ll detail the process for converting your inbound faxes into actual documents.
+        </p>
+
+        <div>
+            <h2 class="text-dark">
+                Step 1: Get a list of inbound faxes
+            </h2>
+
+            <p>
+                We are going to call <strong>Fax_GetFaxIdentifiers</strong> to grab an inbound fax we want to save.
+            </p>
+
+            <p>
+                It requires the <strong>Username/Password/ProdID</strong> as well as a <strong>StartDate</strong> and
+                <strong>FaxDirection</strong>. We’ll set the <strong>StartDate</strong> to ‘1/1/2020’ and the
+                <strong>FaxDirection</strong> to ‘Inbound’. This will get us all inbound faxes that came in after
+                1/1/2020.
+            </p>
+
+            <p>
+                If you have any inbound faxes, you’ll see something like this:
+            </p>
+
+            <img width="800px" class="img-fluid mt-2 mb-4" src="img/api-img-1.png" alt="Result Preview Image">
+
+            <p>
+                We see two results are returned. Each has an <strong>ID</strong>, <strong>Direction</strong>,
+                <strong>Date</strong> timestamp and a <strong>Tag</strong>. We are interested in the <strong>ID</strong>
+                field.
+            </p>
+        </div>
+
+        <div>
+            <h2 class="text-dark">
+                Step 2: Retrieving the Fax data using the Id.
+            </h2>
+
+            <p>
+                In order to retrieve the actual fax document we need to take that <strong>ID</strong>, and pass it to
+                <strong><a
+                        href="https://app.swaggerhub.com/apis-docs/WestFax2/WestFax_API_2/2.0-oas3#/Core/FaxGetFaxDocumentsByRespEncPost">Fax_GetFaxDocuments</a></strong>.
+            </p>
+
+            <p>
+                The <strong>Fax_GetFaxDocuments</strong> call requires the standard authentication and two additional
+                parameters: <strong>FaxIds1</strong> and <strong>Format</strong>. The <strong>FaxIds1</strong> field
+                requires an <strong>ID</strong> from the previous call, which identifies the fax document you want to
+                download. The <strong>Format</strong> field should be one of the following [pdf, tiff, jpeg, png, gif].
+                We will use pdf.
+            </p>
+
+            <blockquote class="blockquote border-left border-primary">
+                <p class="ml-2">
+                    <strong>Side Note:</strong>
+                    The FaxIds1 field is for the first Fax. You can specify several FaxIds fields. So if you had 4 faxes
+                    you would populate FaxIds1, FaxIds2, FaxIds3, FaxIds4. You can retrieve multiple fax documents at
+                    the same time to save calls to the API.
+                </p>
+            </blockquote>
+
+            <p>
+                After you call <strong><a
+                        href="https://app.swaggerhub.com/apis-docs/WestFax2/WestFax_API_2/2.0-oas3#/Core/FaxGetFaxDocumentsByRespEncPost">Fax_GetFaxDocuments</a></strong>,
+                you will see a response similar to this:
+            </p>
+
+            <div>
+                <pre><code>
+{
+    "Success": true,
+    "Result": [
+        {
+            "FaxFiles": [
+                {
+                    "ContentType": "application/pdf",
+                    "ContentLength": 55344,
+                    "FileContents": "JVBERi0xLjINCg0KNCAwIG9iag0KPDwNCi9FIDU1MDA5DQovSCBbIDk2MyAxMzkgXQ0KL0wgNTUzNDQNCi9M
+                                        aW5lYXJpemVkIDENCi9OIDENCi9PIDcNCi9UIDU1MjE0DQo+PiAgICAgICAgICAgICAgICAgICAgICAgICAgI
+                                        CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgDQplbmRvYmoNCg0KeHJlZg0KNC
+                                        A2DQowMDAwMDAwMDEyIDAwMDAwIG4NCjAwMDAwMDA4NjkgMDAwMDAgbg0KMDAwMDAwMDk2MyAwMDAwMCBuDQo
+                                        wMDAwMDAxMTAzIDAwMDAwIG4NCjAwMDAwMDEzMDk..."
+                }
+            ],
+            "Id": "0000000-7722-42d9-b55f-00000000000",
+            "Direction": "Outbound",
+            "Date": "2020-03-12T15:28:42Z",
+            "Status": "Ok",
+            "Format": "pdf",
+            "PageCount": 1
+        }
+    ]
+}
+                </code></pre>
+            </div>
+
+            <p>
+                Let’s examine this result in detail. First we have the <strong>Format</strong> which is PDF. The
+                ContentLength is also important as it gives you an indication of the size of the document. In this case
+                it looks like a small one page document at 55,344 bytes. Now we want to proceed with decoding this
+                document, so the important field here is the <strong>FileContents</strong>.
+            </p>
+
+            <p>
+                <strong>FileContents</strong> is base64 encoded so it returns a very long string of random-looking
+                characters. You can read more about base64 encoding here.
+            </p>
+        </div>
+        <div id="code-examples">
+            <h2>Below are a few examples:</h2>
+
+            <ul style="list-style-type: none;">
+                <li>
+                    <h3>PHP:</h3>
+                    <pre>
+                        <code>
+&lt;?php
+    $str = 'SGVsbG8gV29ybGQg8J+Yig==';
+    echo base64_decode($str);
+
+    //Outputs "Hello World"
+
+?&gt;
+                        </code>
+                    </pre>
+                    <p>
+                        Here is the <a
+                            href="https://sandbox.onlinephpfunctions.com/code/acbed878020e762c43cfc503333ae4af9ae045a5">PHPfiddle</a>
+                        to try on your own.
+                    </p>
+                </li>
+                <li>
+                    <h3>Python 3+:</h3>
+                    <pre><code>
+# Fax Base64 data
+
+fax_data = b'iVBORw0KGgoAAAANSUhEUgAABoIAAAaCCAYAAAABZu+EAAAqOElEQVR42uzBAQEAAACAkP6v7ggKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+             AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+             AAAAAAAAAAAAIcAeHkAAeLqlDIAAAAASUVORK5CYII='
+
+# For both Python 2.7 and Python 3.x
+import base64
+with open("faxdoc.pdf", "wb") as fh:
+    fh.write(base64.decodebytes(img_data))
+                    </code></pre>
+                </li>
+                <li>
+                    <h3>C# .NET:</h3>
+                    <pre>
+                        <code>
+# C# is the easiest of all. One line of code!
+File.WriteAllBytes(@"c:\directory\yourfile.pdf", Convert.FromBase64String(yourBase64String));
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+
+        </div>
+        <p class="lead">
+            So as one can see, converting to a usable file from base64 data is relatively simple and easy to implement.
+            Please <a href="contact.html">contact us</a> if you have any questions.
+        </p>
+
+        <span>
+            March 26, 2020 /
+        </span>
+    </div>
+</section>
+
+
+<partial src="footer.html"></partial>
