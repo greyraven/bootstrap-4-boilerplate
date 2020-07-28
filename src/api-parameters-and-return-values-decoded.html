@@ -23,7 +23,7 @@
         </p>
     </div>
 
-    <div>
+    <div class="m-2">
         <h2>
             <strong><a
                     href="https://apidocs.westfax.com/?version=latest#329863fe-37b7-46b4-bee4-507949664be2">Fax_SendFax</a></strong>
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <div>
+    <div class="m-2">
         <h2><strong><a
                     href="https://apidocs.westfax.com/?version=latest#2a448185-e072-4810-b9bc-f234c3ef4d9b">Fax_GetFaxDescriptionsUsingIds</a></strong>
         </h2>
@@ -130,7 +130,202 @@ Result can be: {
         </div>
     </div>
 
-    <span class="text-muted">
+    <div class="m-2">
+        <h2>
+            <strong><a
+                    href="https://apidocs.westfax.com/?version=latest#2409c8c1-9de0-4dc2-b06b-a11b5e887496">Fax_GetFaxIdentifiers</a></strong>
+        </h2>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-lg">
+                <h3>
+                    Input Parameters
+                </h3>
+                <ul>
+                    <li>
+                        <strong>FaxDirection</strong> - <strong>Inbound</strong> or <strong>Outbound</strong>>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg">
+                <h3>
+                    Output Values
+                </h3>
+                <ul>
+                    <li>
+                        <strong>"Success"</strong>: <strong>true,</strong>
+                    </li>
+                    <li>
+                        <strong>"Result"</strong>:
+                        <pre><code>
+[
+    {
+        "Id": "000000-00000-00000-000000",
+        "Direction": "Inbound",
+        "Date": "2020-01-23T21:24:50Z",
+        "Tag": "None"
+    },
+    {
+        "Id": "000000-00000-00000-000000",
+        "Direction": "Inbound",
+        "Date": "2020-01-23T21:24:50Z",
+        "Tag": "None"
+    }
+]
+                        </code></pre>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-2">
+        <h2>
+            <strong>
+                <a
+                    href="https://apidocs.westfax.com/?version=latest#19828d39-d90c-471e-ac89-9f0aae84859a">Fax_GetFaxDocuments</a>
+            </strong>
+        </h2>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-lg">
+                <h3>Input Parameters</h3>
+                <ul>
+                    <li>
+                        <strong>FaxIds1..3</strong>
+                        <div>
+                            <pre><code>
+{
+    "Id": "28887ac4-424d-4164-9def-ca5e926342d8",
+    "Direction": "Outbound"
+}
+                            </code></pre>
+                        </div>
+                        <p>Include the jobId and the Direction which can be <strong>Inbound</strong> or
+                            <strong>Outbound</strong></p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg">
+                <h3>Output Values</h3>
+                <ul>
+                    <li>
+                        <pre><code>
+{
+    "Success":true,
+    "Result": [{
+        "FaxFiles":[{
+            "ContentType":"application/pdf",
+            "ContentLength":35586,
+            "FileContents":"JVBERi0xLjINCgolJUVPRg0K..."
+        }],
+        "Id":"0000000-0000-0000-0000000000",
+        "Direction":"Inbound",
+        "Date":"2020-01-23T21:24:50Z",
+        "Status":"Ok",
+        "Format":"pdf",
+        "PageCount":1
+    }]
+}
+                        </code></pre>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-2">
+        <h2>
+            <strong>
+                <a href="https://apidocs.westfax.com/?version=latest#6d40ba71-83da-47f6-984e-eabc7ffde56b">Fax_ChangeFaxFilterValue</a>
+            </strong>
+        </h2>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-lg">
+                <h3>Input Parameters</h3>
+                <ul>
+                    <li>
+                        <strong>FaxIds1..3</strong>
+                        <div>
+                            <pre><code>
+Must be in JSON:
+{
+    "Id": "0000000-00000-000000-000000000"
+}
+                            </code></pre>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Filter</strong>:  is what we are changing the specified fax status to:
+                        <ul>
+                            <li><strong>None</strong> (reset - marked as unread)</li>
+                            <li>
+                                <strong>Retrieved</strong> (Marked as read)
+                            </li>
+                            <li>
+                                <strong>Removed</strong> (Deleted)
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col-lg">
+                <h3>Output Values</h3>
+                <div>
+
+                        <pre><code>
+{
+    "Success": true,
+    "Result": true
+}
+                        </code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-2">
+        <h2>
+            <strong>
+                <a href="https://apidocs.westfax.com/?version=latest#6d40ba71-83da-47f6-984e-eabc7ffde56b">Fax_GetProductsWithInboundFaxes</a>
+            </strong>
+        </h2>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-lg">
+                <h3>Input Parameters</h3>
+                    <ul>
+                        <li>
+                            <strong>Filter:</strong>
+                            <ul>
+                                <li>None</li>
+                                <li>Retrieved</li>
+                                <li>Removed</li>
+                            </ul>
+                        </li>
+                    </ul>
+            </div>
+            <div class="col-lg">
+                <h3>Output Values</h3>
+                <ul>
+                    <li>None</li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+
+    <span class="text-muted mt-4">
         January 23, 2020 /
     </span>
 
