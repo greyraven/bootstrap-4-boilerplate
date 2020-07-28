@@ -247,3 +247,16 @@ marquee {
     color: #222;
   }
 }
+
+[id*="product-"] {
+  h2 {
+    color: #222;
+    a {
+      color: inherit;
+    }
+  }
+
+  img {
+    width: 60%;
+  }
+}
