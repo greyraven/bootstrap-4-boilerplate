@@ -21,7 +21,10 @@ a.nav-link {
   font-family: Lato, HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .bannerImg {
-  background-color: #222222 !important;
+  background-repeat: no-repeat;
+  background-image: url(/img/HIPAA-HEADER-2.jpg);
+  background-attachment: scroll;
+  background-position: top right;
   max-height: 530px;
 }
 
@@ -109,6 +112,10 @@ section.pricing {
   font-size: 1em;
   font-weight: bold;
 }
+.right-dropdown-padding{
+margin-left:88%;
+}
+
 /*FOOTER*/
 footer a {
   color: #ffffff !important;
@@ -116,8 +123,7 @@ footer a {
 .footer {
   margin-top: 3rem;
 }
-.nav-link-white {
-}
+
 /* ICON TWEAKS */
 .fa-exchange-alt {
   -webkit-transform: rotate(90deg);
