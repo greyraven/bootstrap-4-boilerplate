@@ -1,0 +1,220 @@
+<partial src="header.html" title="How-to: Call Status and Job Status in the API Primer | WestFax API" metadesc="When you send a fax job via the API the statuses you get back could confuse you if you don't know what to look for. Each fax can have multiple destinations. Each destination has it's own status depending on the receivers availability. This article should decode any confusion surrounding Call and job status."></partial>
+
+<section class="container mx-auto mt-4 mb-4" id="blog-post">
+    <div class="mb-4" id="blog-title">
+        <h1>HOW-TO: CALL STATUS AND JOB STATUS IN THE API PRIMER</h1>
+        <a href="https://westfax.com/category/blog/">BLOG</a>
+    </div>
+
+    <div class="text-muted">
+        <p>This article assumes you:</p>
+        <ol>
+            <li>
+                <a href="https://westfax.com/developer-registration/">Have an API developer account.</a>
+            </li>
+            <li>
+                <a href="https://westfax.com/how-to-add-send-a-fax-via-api-with-callback-function/">Sent a Fax via the API</a>
+            </li>
+        </ol>
+
+        <p>
+            After we send the fax we are going to query the API for the status.
+        </p>
+
+        <p>
+            Here is a PHP Curl request to the <strong>Fax_GetFaxDescriptionsUsingIds</strong> API function. We are passing in the standard account information as well as a nested array of the <strong>FaxIds1</strong> field which is the job id we got back from our <strong>Fax_SendFax</strong> call.
+        </p>
+
+        <div>
+            <pre><code>
+&lt;?php
+
+$curl = curl_init()
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => "https://api2.westfax.com/REST/Fax_GetFaxDescriptionsUsingIds/json",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => array('Username' => 'test@test.com','Password' => 'fakepass','Cookies' => 'false',
+  'ProductId' => '00000000-0000-0000-0000-000000000',
+  'FaxIds1' => '{"Id":"111111-1111-1111-1111-111111111111","Direction":"Outbound"}'),
+  CURLOPT_HTTPHEADER => array(
+    "Content-Type: application/x-www-form-urlencoded"
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;
+
+&gt;
+
+            </code></pre>
+        </div>
+
+        <p>
+            Here is the result. Notice the output is broken down into two calls in the <strong>FaxCallInfoList</strong>. You have the Individual <strong>CallId</strong> for each call in the job and the individual status. Here it is <strong>Waiting to dial</strong>. This means we just received the fax and it’s in the pre-processing phase where it is converted to TIFF and being prepared for faxing. Also, note the <strong>Id</strong> field on the main <strong>Result</strong> object. That is the JobID and the Status is currently <strong>Submitted</strong>.
+        </p>
+
+        <div>
+            <pre><code>
+{
+    "Success": true,
+    "Result": [
+        {
+            "FaxCallInfoList": [
+                {
+                    "CallId": "00000000-0000-0000-0000-11111",
+                    "CompletedUTC": "2020-02-24T17:02:45Z",
+                    "TermNumber": "1112223333",
+                    "OrigNumber": "2223334444",
+                    "OrigCSID": "2223334444",
+                    "Result": "Waiting to dial"
+                },
+                {
+                    "CallId": "00000000-0000-0000-0000-22222",
+                    "CompletedUTC": "2020-02-24T17:02:45Z",
+                    "TermNumber": "5556667777",
+                    "OrigNumber": "2223334444",
+                    "OrigCSID": "2223334444",
+                    "Result": "Waiting to dial"
+                }
+            ],
+            "Id": "1111111-1111-1111-1111-111111111",
+            "Date": "2020-02-24T17:02:45Z",
+            "Direction": "Outbound",
+            "Tag": "Retrieved",
+            "PageCount": 1,
+            "FaxQuality": "Normal",
+            "Status": "Submitted",
+            "Reference": "Test Job 1",
+            "JobName": "Test Job"
+        }
+    ]
+}
+            </code></pre>
+        </div>
+
+        <p>
+            Now that some time has passed let’s run the call again. This result below is the same job but it is now <strong>Complete</strong>. You will see one of the jobs is marked as “<strong>Sent</strong>” and the other one is “<strong>Failed</strong>” and the overall job has the Status of “Complete“. You need to look at the <strong>Result</strong> of the <strong>FaxCallInfoList</strong> to determine the true status of a fax job. Complete just means that we are done with this fax. <u>It does not mean success</u>. You will want to either resend the fax to the failed call or handle it manually by figuring out what is wrong with the number and updating it. 
+        </p>
+
+        <div>
+            <pre><code>
+{
+    "Success": true,
+    "Result": [
+        {
+            "FaxCallInfoList": [
+                {
+                    "CallId": "00000000-0000-0000-0000-11111",
+                    "CompletedUTC": "2020-02-24T17:04:55Z",
+                    "TermNumber": "1112223333",
+                    "OrigNumber": "2223334444",
+                    "TermCSID": "(222) 333-4444",
+                    "OrigCSID": "2223334444,
+                    "Result": "Sent"
+                },
+                {
+                    "CallId": "00000000-0000-0000-0000-22222",
+                    "CompletedUTC": "2020-02-24T17:04:52Z",
+                    "TermNumber": "5556667777",
+                    "OrigNumber": "2223334444",
+                    "TermCSID": "(222) 333-4444",
+                    "OrigCSID": "2223334444",
+                    "Result": "Failed"
+                }
+            ],
+            "Id": "1111111-1111-1111-1111-111111111",
+            "Date": "2020-02-24T17:05:28Z",
+            "Direction": "Outbound",
+            "Tag": "Retrieved",
+            "PageCount": 1,
+            "FaxQuality": "Normal",
+            "Status": "Complete",
+            "Reference": "Test Job 1",
+            "JobName": "Test Job"
+        }
+    ]
+}
+            </code></pre>
+        </div>
+
+        <div>
+            <strong>In summary:</strong>
+
+            <p>
+                The job <strong>Status</strong> is representative of whether we are still processing a fax job. The individual Result code on the FaxCallInfoList is the authoritative location for the status. <strong>Complete</strong> means that we are done and will not work on the calls anymore and it is final.
+            </p>
+
+            <p>
+                This confuses some using the API and usually results in 2 kinds of mistakes:
+            </p>
+
+            <ul>
+                <li>
+                    The developer sends multiple calls per job, and does not realize that there is a job <strong>Result</strong>, AND a call <strong>Status</strong>. The developer interprets the job <strong>Status</strong> as the final result, and therefore does not get the real result of the job.
+                </li>
+                <li>
+                    The developer ignores the job result and uses the call result that is retrieved and assumes that the result is the final result. Unless the job Status is marked as <strong>Complete</strong> we are still processing the calls. One should wait for <strong>Status</strong> = <strong>Complete</strong> before you read the individual Result.
+                </li>
+            </ul>
+
+            <p>
+                WestFax can also customize your retry strategy. We typically retry 5 times before failing. If you wish to have us only try once and then fail let us know and we can adjust your retry settings.
+            </p>
+
+            <p>
+                <strong>All possible values of the Call Result (Bold are common Result codes)</strong>
+                <br>
+                <strong>Sent</strong>, //Fax was sent
+                <br>
+                <strong>Waiting to dial</strong>, //We are preparing the fax.
+                <br>
+                <strong>Dialing</strong>, // We are dialing the number.
+                <br>
+                <strong>Busy</strong>, //The line is busy
+                <br>
+                NoAnswer,
+                <br>
+                NoFaxDevice,
+                <br>
+                Cancelled,
+                <br>
+                <strong>Failed</strong>, //We retried several times and it never sent.
+                <br>
+                InvalidNumber // Bad number i.e. 22930-3940-399430A
+                <br>
+                <strong>All possible values of Job Status (Some you will never see. Bold are common Status codes):</strong>
+                <br>
+                <strong>Complete</strong>,  //Job is done. Check call Result for individual fax status.
+                <br>
+                <strong>Submitted</strong>, //This means it’s still processing.
+                <br>
+                Production,
+                <br>
+                UnSubmitted,
+                <br>
+                UnAssigned,
+                <br>
+                <strong>Failed</strong>, //None of the calls went through. See Call Result for status.
+                <br>
+                Cancelled,
+                <br>
+                Paused
+            </p>
+        </div>
+    </div>
+
+    <span class="text-muted">
+        February 27, 2020 /
+    </span>
+</section>
+
+<partial src="footer.html"></partial>
