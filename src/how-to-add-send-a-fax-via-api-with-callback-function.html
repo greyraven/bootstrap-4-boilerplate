@@ -1,0 +1,333 @@
+<partial src="header.html" title="How to add send a fax via API with callback function | WestFax API" metadesc="What are callbacks? They are asynchronous, out-of-band requests that your service will send to some other service in response to certain events. This helps you improve the workflow your API. A typical use is for events. You set the callback url which is a page on your website that can process data about an event."></partial>
+
+<section class="container mx-auto mt-4 mb-4" id="blog-post">
+    <div id="blog-title">
+        <h1>
+            HOW TO ADD SEND A FAX VIA API WITH CALLBACK FUNCTION
+        </h1>
+        <div>
+            <a href="https://westfax.com/category/blog/" class="text-muted">BLOG</a>, <a
+                href="https://westfax.com/category/help/" class="text-muted">HELP</a>
+        </div>
+    </div>
+
+    <div class="text-muted">
+        <p>
+            In this article we will discuss how to send a fax using WestFax API as well as have the WestFax API send a
+            callback when the fax has completed.
+        </p>
+
+        <p>
+            What are callbacks? They are asynchronous, out-of-band requests that your service will send to some other
+            service in response to certain events. This helps you improve the workflow your API. A typical use is for
+            events. You set the callback url which is a page on your website that can process data about an event. Your
+            page is configured to receive parameters using POST or GET Method. WestFax supports both. When an event
+            occurs (Successful fax delivery, etc…) it will call that url with the proper parameters so your application
+            can handle the event and process your workflow without having to intermittently ping our service.
+        </p>
+
+        <div>
+            <strong>
+                Here is what we are going to do:
+            </strong>
+            <ol>
+                <li>Send a test ping to the API to make sure we can connect.</li>
+                <li>
+                    Send a fax using the API to ourselves or a test fax number.
+                </li>
+                <li>
+                    Get the callback response and call a web service that gives us the status of the fax
+                </li>
+            </ol>
+        </div>
+
+        <div>
+            <strong>Here is what you need:</strong>
+            <ol>
+                <li>
+                    We will assume you are using a relatively modern development framework. PHP, React, .Net, etc…
+                </li>
+                <li>
+                    We recommend you use a tool like <a href="https://www.getpostman.com/">Postman</a> (Free and
+                    available on all platforms) to test your API’s and generate the code.
+                </li>
+                <li>
+                    <a href="https://westfax.com/developer-registration/">Developer API account</a>. Easy to sign up and
+                    get started immediately.
+                </li>
+            </ol>
+        </div>
+
+        <p>
+            The WestFax API is comprised of a large set of methods that are exposed using a RESTful interface. Data can
+            be interchanged in a number of formats including JSON and XML. Additionally, WestFax offers SOAP and RPC
+            bindings that are described elsewhere. For the purposes of this demo the REST interface with JSON encoding
+            is used.
+        </p>
+
+        <div>
+            <ol>
+                <li class="m-2">
+                    Get the sample code for Postman. <a href="https://github.com/westfax/API-Postman">Link here</a>.
+                </li>
+                <li class="m-2">
+                    <p>Click Download or Fork it to your local repo.</p>
+                    <div>
+                        <img width="300px" class="img-fluid" src="img/github-clone.png"
+                            alt="GitHub Clone Dropdown image">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        Once you have the local files you should see two Json Files: WestFaxApi_Postman_collection.json
+                        and WestFaxApiEnvironment.postman_environment.json
+                    </p>
+                </li>
+                <li class="m-2">
+                    <p>Open Postman and create a new Request. You can call it whatever you want to call it but we will
+                        use WestFax.</p>
+                    <div><img src="img/postman.png" alt="Postman how-to" width="360px" class="img-fluid"></div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        Now go click the File -> Import command.
+                    </p>
+                    <div>
+                        <img class="img-fluid" width="360px" src="img/postman-file-import.png"
+                            alt="Postman file import menu">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        Drag or select the two Json Files from the code you downloaded earlier and click import.
+                    </p>
+                </li>
+                <li class="m-2">
+                    <p>
+                        You will see it quickly import and you will have 23 requests in your new WestFax Collection.
+                    </p>
+                    <div>
+                        <img class="img-fluid" width="380px" src="img/postman-folder.png" alt="Postman Folder">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        Now look at the top right corner of postman. You should see a drop down and an “eye” icon and a
+                        gear icon.
+                    </p>
+                    <p>
+                        Select the Dropdown to select “WestFaxApiEnvironment” and then click the Eye icon.
+                    </p>
+                    <div>
+                        <img width="380px" class="img-fluid" src="img/postman-dropdown.png"
+                            alt="Postman dropdown example">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        You will now see a bunch of pre-defined variables. You will want to change these by clicking
+                        Edit.
+                    </p>
+                    <div>
+                        <img width="450px" class="img-fluid" src="img/postman-pre-defined-vars.jpg"
+                            alt="Postman pre-defined vars">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        Change the default values to the ones you received when you signed up for API access.
+                    </p>
+                </li>
+                <li class="-m-2">
+                    <p>
+                        Now let’s go test to make sure we are connecting ok and getting a response from the server. On
+                        the left menu under “23 requests” select the “Security_Ping”. Go ahead and click the blue “SEND”
+                        button.
+                    </p>
+                    <div>
+                        <img width="360px" class="img-fluid" src="img/postman-request-example.png"
+                            alt="Postman Request Example">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        You should see something like this come back from the API. If not please feel free to <a
+                            href="https://westfax.com/contact/">contact us</a> for support.
+                    </p>
+                    <div><img width="360px" class="img-fluid" src="img/postman-response-example.png"
+                            alt="Postman Request Example"></div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        Now let’s try to send a fax. If you have an incoming number attached to your account you can use
+                        that or any other fax number. You can also use the well known HP Faxback test number at
+                        1-888-473-2963. They will fax you back that they received your fax usually within 5 minutes.
+                    </p>
+                </li>
+                <li class="m-2">
+                    <p>So click the Fax_SendFax method on the left and you will see this for your Body setup.</p>
+                    <div>
+                        <img width="360px" class="img-fluid" src="img/fax-sendfax-method.png" alt="Fax_SendFax Method">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        The <span style="color: orange;">{{ Orange }}</span> values are filled in from the config you
+                        already set so you can ignore those. The values you need to set are the
+                        <strong>Numbers1</strong>, <strong>Files0</strong> fields. The rest are optional and you can
+                        unclick them if you want. Although adding a <strong>FeedbackEmail</strong> value is useful to
+                        get confirmation of the fax sending. Once you set all these variables go ahead and click send.
+                    </p>
+                </li>
+                <li class="m-2">
+                    <p>
+                        (Optional: Callback). Set your CallbackUrl with templated values for replacement. In this case
+                        we are using: [get]http://yourweburl.com/{@jobid}?prod={@prodid}&dir={@dir}. WestFax will
+                        replace the @jobid, @prodid and @dir with real values so one can process accordingly. GET is
+                        implied so you can exclude [get] from the beginning or use [post] to use that method.
+                    </p>
+                </li>
+                <li class="m-2">
+                    <p>
+                        You should see a result code of True and a hash string with the confirmation code. This Result
+                        code is the @jobid you will use in the next phase of handling the callback so copy this value
+                        somewhere.
+                    </p>
+                    <div>
+                        <img width="360px" class="img-fluid" src="img/response-example-2.png" alt="Response example 2">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        Ok, so here is a neat trick that Postman give us. You can get all your code done for you. Just
+                        click the button “Code”. It’s kind of buried near the Send button next to cookies.
+                    </p>
+                    <div>
+                        <img src="img/postman-neat-trick.png" alt="image" width="360px" class="img-fluid">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        Now when you click code you will get formatted code for almost any programming language you may
+                        need:
+                    </p>
+                    <div>
+                        <img src="img/postman-code-snippets.png" alt="img" width="460px" class="img-fluid">
+                    </div>
+                </li>
+            </ol>
+
+            <div class="mt-2 mb-2">
+                <strong>
+                    Phase 2: Let’s check the Status of the Fax now that the pingback call has come back.
+                </strong>
+
+                <p>
+                    So the fax process worked and we are waiting for a callback response. Basically WestFax will ping a
+                    url that you provide. So let’s assume it is https://yourwebsite.com/
+                </p>
+                <p>
+                    We will pass in some parameters with it using GET or POST. GET is implied so you must specify POST
+                    in the callback request if you want it to post to a form. We pass in three pieces of information:
+                </p>
+
+                <ol>
+                    <li>
+                        <strong>@jobid</strong> = This is the jobid that you got back in the Result from the Fax_SendFax
+                        call. It will match the Result code so you can match it to specific fax calls.
+                    </li>
+                    <li>
+                        <strong>@prodid</strong> = This is your product id from the Fax_SendFax call. If you have
+                        multiple accounts you can use this to filter out other accounts.
+                    </li>
+                    <li>
+                        <strong>@dir</strong> = this will be inbound or outbound. Basically telling you which direction
+                        the fax sent.
+                    </li>
+                </ol>
+
+                <p>
+                    So when the callback fires your webpage should handle those input values.
+                </p>
+
+                <p>
+                    Once you have the values you can call the next webservice and get the data back. Let’s get started.
+                </p>
+
+                <ol>
+                    <li class="m-2">
+                        <p>
+                            Let’s go back to Postman and find the webservice called Fax_GetFaxDescriptionsUsingIds. Go
+                            ahead and click it. You’ll see something like this:
+                        </p>
+                        <div>
+                            <img width="400px" class="img-fluid" src="img/Fax_GetFaxDescription.png"
+                                alt="Fax_GetFaxDescriptionUsing Ids Example">
+                        </div>
+                    </li>
+                    <li class="m-2">
+                        <p>
+                            Ok, so let’s look at the Body of this request so we know what we need to fill out to get the
+                            fax status.
+                        </p>
+                        <div>
+                            <img width="400px" class="img-fluid" src="img/Fax_GetFaxDescription-2.png"
+                                alt="Fax_GetFaxDescriptionUsing Ids Example #2">
+                        </div>
+                        <p>
+                            We see that it has the username, password, cookies (we can ignore that), productID and two
+                            new fields FaxIds1 and FaxIds2. You’ll notice that these fields have template string
+                            placeholders of {{FaxIds1}} and {{FaxIds2}}. This is because these values are serialized and
+                            we’ll look at this next. The FaxIds fields are the Faxes we want to get the status of. We
+                            have the result code from the previous call so let’s go explore that.
+                        </p>
+                    </li>
+                    <li class="m-2">
+                        <p>
+                            We are going to click on the Pre-request Script header and we’ll see the format of the
+                            template placeholder we talked about previously.
+                        </p>
+                        <div>
+                            <img width="400px" class="img-fluid" src="img/Fax_GetFaxDescription-3.png"
+                                alt="Fax_GetFaxDescriptionUsing Ids Example #3">
+                        </div>
+                        <p>
+                            So we already put this code in there for you. All you need to do is replace the Id field.
+                            The Direction, Date and Tag are optional as the ID is the key field here. So we’ll put our
+                            Id in here and you can see on Line 8 that we bind the JSON string to the Variable. You could
+                            also copy all the JSON from the variable id1 into the FaxIds1 field directly but this
+                            template allows you to append more Id’s and get the status of several faxes.
+                        </p>
+                    </li>
+                    <li class="m-2">
+                        <p>
+                            Once you have the ID in there you will hit Send and get the following output.
+                        </p>
+                        <div>
+                            <img width="400px" class="img-fluid" src="img/Fax_GetFaxDescription-4.png"
+                                alt="Fax_GetFaxDescriptionUsing Ids Example #4">
+                        </div>
+                    </li>
+                    <li class="m-2">
+                        <p>
+                            You can see here that we have a complete record of the fax transmission. You can parse the
+                            JSON result in whatever method you choose and you can see that we have the Date, Direction,
+                            PageCount, Quality and Status which is Complete. So the fax is completed.
+                        </p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <p>
+            <strong>Success!</strong> As you can see it’s not hard at all to add Faxing to your Enterprise application.
+            If you have questions or need more help please reach out to us at <a href="tel:800-473-6208">800-473-6208</a> or <a href="contact.html">contact us via email</a>.
+        </p>
+
+        <span class="mt-2 mb-2">
+            July 16, 2019 /
+        </span>
+    </div>
+</section>
+
+<partial src="footer.html"></partial>
