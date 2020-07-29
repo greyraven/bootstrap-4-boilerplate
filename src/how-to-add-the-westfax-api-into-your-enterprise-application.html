@@ -1,0 +1,203 @@
+<partial src="header.html" title="How to add the WestFax API into your enterprise application | WestFax API" metadesc="You have your enterprise application coded but you need to be able to send faxes occasionally. Sure, you could just generate a PDF, Print it off and then fax it. But with just a few lines of code you can integrate faxing into your application."></partial>
+
+<section class="container mx-auto mb-4 mt-4" id="blog-post">
+    <div id="blog-title">
+        <h1>
+            How to add the WestFax API into your enterprise application
+        </h1>
+        <div>
+            <a href="https://westfax.com/category/blog/" class="text-muted">BLOG</a>, <a
+                href="https://westfax.com/category/help/" class="text-muted">HELP</a>
+        </div>
+    </div>
+
+    <div class="text-muted">
+        <p>
+            You have your enterprise application coded but you need to be able to send faxes occasionally. Sure, you
+            could just generate a PDF, Print it off and then fax it. But with just a few lines of code you can integrate
+            faxing into your application. Here are some simple instructions to get your application fax enabled. In this
+            article we will show you how to send a fax.
+        </p>
+
+        <div>
+            <p>
+                Here is what you need:
+            </p>
+            <ol>
+                <li class="m-2">
+                    We will assume you are using a relatively modern development framework. PHP, React, .Net, etc…
+                </li>
+                <li class="m-2">
+                    We recommend you use a tool like <a href="https://www.getpostman.com/">Postman</a> (Free and
+                    available on all platforms) to test your API’s and generate the code.
+                </li>
+                <li class="m-2">
+                    <a href="developer-registration.html">Developer API account</a>. Easy to sign up and get started
+                    immediately.
+                </li>
+            </ol>
+        </div>
+        <p>
+            The WestFax API is comprised of a large set of methods that are exposed using a RESTful interface. Data can
+            be interchanged in a number of formats including JSON and XML. Additionally, WestFax offers SOAP and RPC
+            bindings that are described elsewhere. For the purposes of this demo the REST interface with JSON encoding
+            is used.
+        </p>
+
+        <div>
+            <ol>
+                <li class="m-2">
+                    Get the sample code for Postman. <a href="https://github.com/westfax/API-Postman">Link here</a>.
+                </li>
+                <li class="m-2">
+                    <p>Click Download or Fork it to your local repo.</p>
+                    <div>
+                        <img width="300px" class="img-fluid" src="img/github-clone.png"
+                            alt="GitHub Clone Dropdown image">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        Once you have the local files you should see two Json Files: WestFaxApi_Postman_collection.json
+                        and WestFaxApiEnvironment.postman_environment.json
+                    </p>
+                </li>
+                <li class="m-2">
+                    <p>Open Postman and create a new Request. You can call it whatever you want to call it but we will
+                        use WestFax.</p>
+                    <div><img src="img/postman.png" alt="Postman how-to" width="360px" class="img-fluid"></div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        Now go click the File -> Import command.
+                    </p>
+                    <div>
+                        <img class="img-fluid" width="360px" src="img/postman-file-import.png"
+                            alt="Postman file import menu">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        Drag or select the two Json Files from the code you downloaded earlier and click import.
+                    </p>
+                </li>
+                <li class="m-2">
+                    <p>
+                        You will see it quickly import and you will have 23 requests in your new WestFax Collection.
+                    </p>
+                    <div>
+                        <img class="img-fluid" width="380px" src="img/postman-folder.png" alt="Postman Folder">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        Now look at the top right corner of postman. You should see a drop down and an “eye” icon and a
+                        gear icon.
+                    </p>
+                    <p>
+                        Select the Dropdown to select “WestFaxApiEnvironment” and then click the Eye icon.
+                    </p>
+                    <div>
+                        <img width="380px" class="img-fluid" src="img/postman-dropdown.png"
+                            alt="Postman dropdown example">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        You will now see a bunch of pre-defined variables. You will want to change these by clicking
+                        Edit.
+                    </p>
+                    <div>
+                        <img width="450px" class="img-fluid" src="img/postman-pre-defined-vars.jpg"
+                            alt="Postman pre-defined vars">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        Change the default values to the ones you received when you signed up for API access.
+                    </p>
+                </li>
+                <li class="-m-2">
+                    <p>
+                        Now let’s go test to make sure we are connecting ok and getting a response from the server. On
+                        the left menu under “23 requests” select the “Security_Ping”. Go ahead and click the blue “SEND”
+                        button.
+                    </p>
+                    <div>
+                        <img width="360px" class="img-fluid" src="img/postman-request-example.png"
+                            alt="Postman Request Example">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        You should see something like this come back from the API. If not please feel free to <a
+                            href="https://westfax.com/contact/">contact us</a> for support.
+                    </p>
+                    <div><img width="360px" class="img-fluid" src="img/postman-response-example.png"
+                            alt="Postman Request Example"></div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        Now let’s try to send a fax. If you have an incoming number attached to your account you can use
+                        that or any other fax number. You can also use the well known HP Faxback test number at
+                        1-888-473-2963. They will fax you back that they received your fax usually within 5 minutes.
+                    </p>
+                </li>
+                <li class="m-2">
+                    <p>So click the Fax_SendFax method on the left and you will see this for your Body setup.</p>
+                    <div>
+                        <img width="360px" class="img-fluid" src="img/fax-sendfax-method.png" alt="Fax_SendFax Method">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        The <span style="color: orange;">{{ Orange }}</span> values are filled in from the config you
+                        already set so you can ignore those. The values you need to set are the
+                        <strong>Numbers1</strong>, <strong>Files0</strong> fields. The rest are optional and you can
+                        unclick them if you want. Although adding a <strong>FeedbackEmail</strong> value is useful to
+                        get confirmation of the fax sending. Once you set all these variables go ahead and click send.
+                    </p>
+                </li>
+                <li class="m-2">
+                    <p>
+                        You should see a result code of True and a hash string with the confirmation code.
+                    </p>
+                    <div>
+                        <img width="360px" class="img-fluid" src="img/response-example-2.png" alt="Response example 2">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        Ok, so here is a neat trick that Postman give us. You can get all your code done for you. Just
+                        click the button “Code”. It’s kind of buried near the Send button next to cookies.
+                    </p>
+                    <div>
+                        <img src="img/postman-neat-trick.png" alt="image" width="360px" class="img-fluid">
+                    </div>
+                </li>
+                <li class="m-2">
+                    <p>
+                        Now when you click code you will get formatted code for almost any programming language you may
+                        need:
+                    </p>
+                    <div>
+                        <img src="img/postman-code-snippets.png" alt="img" width="460px" class="img-fluid">
+                    </div>
+                </li>
+            </ol>
+
+        </div>
+
+        <p>
+            <strong>Success!</strong> As you can see it’s not hard at all to add Faxing to your Enterprise application.
+            If you have questions or need more help please reach out to us at <a
+                href="tel:800-473-6208">800-473-6208</a> or <a href="contact.html">contact us via email</a>.
+        </p>
+
+        <span class="mt-2 mb-2">
+            July 16, 2019 /
+        </span>
+    </div>
+</section>
+
+<partial src="footer.html"></partial>
