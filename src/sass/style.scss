@@ -249,6 +249,11 @@ marquee {
 }
 
 #blog-post {
+  #blog-title {
+    a {
+      color: #6c757d;
+    }
+  }
   strong {
     color: #222;
   }
