@@ -9,6 +9,11 @@ body {
   font-family: "Open Sans", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+@media (min-width: 1200px){
+.container, .container-sm, .container-md, .container-lg, .container-xl {
+    max-width: 1310px !important;
+  }
+}
 .navbar {
   border-bottom: 1px solid #eee;
   font-weight: bold;
@@ -19,6 +24,14 @@ a.nav-link {
 }
 .lato {
   font-family: Lato, HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.bannerBiz {
+  background-repeat: no-repeat;
+  background-image: url(/img/Biz-header.jpg);
+  background-attachment: scroll;
+  background-position: top right;
+  max-height: 330px;
+  background-size: cover;
 }
 .bannerImg {
   background-repeat: no-repeat;
@@ -40,39 +53,54 @@ a.nav-link {
 
 /* Pricing Tables */
 
-section.pricing {
-  background: #ffffff;
-  background: linear-gradient(to right, #eeeeee, #ffffff);
-}
-
-.pricing .card {
-  border: none;
+.pricing .card{
   transition: all 0.2s;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }
-
-.pricing hr {
-  margin: 1.5rem 0;
+.pricing .card-top{
+  background:#222222;
+  color:#FFF;
+  text-align:center;
 }
-
-.pricing .card-title {
-  margin: 0.5rem 0;
-  font-size: 1.4rem;
-  letter-spacing: 0.1rem;
-  font-weight: bold;
+.pricing .card-top h2{
+  font-size:20px;
+  font-weight:bold;
 }
+.pricing .card-mid{
+  background:#555555;
+    background: linear-gradient(to bottom, #555555, #111111);
 
-.pricing .card-price {
-  font-size: 1rem;
-  margin: 0;
+  color:#FFF;
+  text-align:center;
 }
-
-.pricing .card-price .period {
-  font-size: 0.8rem;
+.pricing .card-mid h5{
+  font-size:12px;
 }
-
-.pricing ul li {
-  margin-bottom: 1rem;
+.pricing .card-mid h2{
+  font-size:40px;
+  font-weight:bold;
+}
+.pricing .card-mid .red{
+  padding-top:10px;
+  color: #b4232d;
+  text-transform:uppercase;
+  font-weight:bold;
+}
+.pricing .card-body{
+  text-align:center;
+  font-size:14px;
+}
+@media (min-width: 576px){
+.pricing .card-deck {
+    display: contents;
+    flex-flow: row wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+}
+section.pricing {
+  background: #eeeeee;
+  background: linear-gradient(to bottom, #dddddd, #eeeeee);
 }
 
 /* Color options */
