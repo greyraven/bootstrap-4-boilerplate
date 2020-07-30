@@ -1,0 +1,48 @@
+<partial src="header.html" title="ANI and CSID Decoded and why it's important. | WestFax Fax API" metadesc="What is ANI? Why is it important. What is CSID and what can you populate on your fax header? We explore both settings and discuss the implications of not correctly identifying your faxes."></partial>
+
+<section class="container mx-auto mb-4 mt-4" id="blog-post">
+    <div id="blog-title" class="mb-4">
+        <h1>
+            ANI AND CSID DECODED AND WHY IT’S IMPORTANT. 
+        </h1>
+        <div>
+            <a class="text-muted href="https://westfax.com/category/blog/">BLOG</a>, <a href="https://westfax.com/category/uncategorized/">UNCATEGORIZED</a>
+        </div>
+    </div>
+
+    <div class="text-muted">
+        <p>
+            The ANI is <a href="https://en.wikipedia.org/wiki/Automatic_number_identification">Automatic Number Identification</a>. It is used by the phone carriers to determine the originating fax or telephone number for any call. ANI is different, conceptually and technically, from <a href="https://en.wikipedia.org/wiki/Caller_ID">caller ID</a> service. A caller’s telephone number and line type are captured by ANI service even if <a href="https://en.wikipedia.org/wiki/Caller_ID#Blocking">caller ID blocking</a> is activated.
+        </p>
+
+        <p>
+            When you set your ANI in an API call please set the number to your fax number with no spaces or punctuation.
+        </p>
+
+        <p>
+            Example: 3335551212
+        </p>
+
+        <p>
+            If you set it to an invalid number, the receiver may block it as invalid or spam. If you are testing your API, and you can’t get the receiving fax line to accept the call, it could be because their carrier is blocking invalid ANI.
+        </p>
+
+        <p>
+            <strong>CSID</strong> is <a href="https://en.wikipedia.org/wiki/Called_subscriber_identification">Called Subscriber Identification</a> (abbreviated CSID), and is a fax number that identifies the specific fax machine sending the fax. A CSID is not required in all cases, but it is a good practice to set so that your fax machine will not get blocked for being spam or unknown.
+        </p>
+
+        <p>
+            In some cases, one would want to set the CSID to another number if you want to have the receiver send responses to another number. Think of it as a REPLY TO field on email.  If one has many outbound fax lines, but one wants people to fax back to a specific return fax number, one could set the CSID to the primary inbound line so it appears the fax came from that number.
+        </p>
+
+        <p>
+            CSID is a string that identifies a sending fax machine.  This data is transmitted as part of the fax protocol when the fax transmission is negotiated.  This identifier can contain numbers, letters and punctuation.  Often it will contain the sending fax number along with a company name.  “Acme Inc.  (303) 555-1212” for instance.  Again this is part of the fax protocol and is completely separate from ANI.
+        </p>
+
+        <p>
+            In summary, when sending faxes with the API it is important to set these values correctly and not just mash numbers in or use placeholders. Many failed test faxes fail because of invalid ANIs.
+        </p>
+    </div>
+</section>
+
+<partial src="footer.html"></partial>
