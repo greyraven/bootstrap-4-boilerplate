@@ -25,7 +25,8 @@ a.nav-link {
   background-image: url(/img/HIPAA-HEADER-2.jpg);
   background-attachment: scroll;
   background-position: top right;
-  max-height: 530px;
+  max-height: 330px;
+  background-size: cover;
 }
 
 .lead {
@@ -85,6 +86,9 @@ section.pricing {
 }
 .subBannerA {
   background-color: #212529;
+}
+.bg-lightgrey{
+  background-color: #666666;
 }
 .white {
   color: #ffffff;
