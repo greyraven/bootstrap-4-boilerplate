@@ -11,7 +11,7 @@ const jsImport = require("gulp-js-import");
 const sourcemaps = require("gulp-sourcemaps");
 const htmlPartial = require("gulp-html-partial");
 const clean = require("gulp-clean");
-const isProd = process.env.NODE_ENV === "prod";
+const isProd = process.env.NODE_ENV === "dev";
 
 const htmlFile = ["src/*.html"];
 
@@ -62,7 +62,10 @@ function js() {
 }
 
 function img() {
-  return gulp.src("src/img/*").pipe(gulpIf(isProd, imagemin())).pipe(gulp.dest("docs/img/"));
+  return gulp
+    .src("src/img/*")
+    .pipe(gulpIf(isProd, imagemin()))
+    .pipe(gulp.dest("docs/img/"));
 }
 
 function serve() {
