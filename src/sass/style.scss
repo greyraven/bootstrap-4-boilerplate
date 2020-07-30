@@ -9,6 +9,11 @@ body {
   font-family: "Open Sans", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+@media (min-width: 1200px){
+.container, .container-sm, .container-md, .container-lg, .container-xl {
+    max-width: 1310px !important;
+  }
+}
 .navbar {
   border-bottom: 1px solid #eee;
   font-weight: bold;
@@ -41,8 +46,8 @@ a.nav-link {
 /* Pricing Tables */
 
 section.pricing {
-  background: #ffffff;
-  background: linear-gradient(to right, #eeeeee, #ffffff);
+  background: #eeeeee;
+  background: linear-gradient(to bottom, #dddddd, #eeeeee);
 }
 
 .pricing .card {
