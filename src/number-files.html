@@ -1,0 +1,138 @@
+<partial src="header.html" title="How-to: Multiple numbers and files in a Fax_SendFax Call | WestFax API" metadesc="Multiple numbers and multiple documents can be included in every fax job. Using these grouping features one can save round trips to the API."></partial>
+
+<section class="mt-4 mb-4 mx-auto container" id="blog-post">
+    <div id="blog-title" class="mb-4">
+        <h1>HOW-TO: MULTIPLE NUMBERS AND FILES IN A FAX_SENDFAX CALL</h1>
+        <a href="https://westfax.com/category/blog/">BLOG</a>
+    </div>
+
+    <div class="text-muted">
+        <div>
+            <span>This article assumes you:</span>
+            <ol class="m-2">
+                <li class="m-1">
+                    <a href="developer-registration.html">Have an API developer account</a>.
+                </li>
+                <li class="m-1">
+                    <a href="https://westfax.com/how-to-add-the-westfax-api-into-your-enterprise-application/">Know how to send a fax using Fax_SendFax.</a>
+                </li>
+            </ol>
+        </div>
+
+        <div>
+            <span>
+                By the end of this how-to you will know how to:
+            </span>
+            <ol class="m-2">
+                <li>
+                    Send a fax with multiple fax documents.
+                </li>
+                <li>
+                    Send a fax with multiple recipients.
+                </li>
+            </ol>
+        </div>
+
+        <p>
+            Let’s examine the vanilla fax job below and in the next example block we’ll add additional numbers and pages.
+        </p>
+
+        <p>
+            This is a javascript example but you’ll be able to adapt the changes to your code once you understand what we are doing.
+        </p>
+
+        <div>
+            <pre><code>
+var data = new FormData();
+data.append("Username", "test@test.com");
+data.append("Password", "test9999");
+data.append("Cookies", "false");
+data.append("ProductId", "00000000-0000-0000-0000-0000000000");
+data.append("JobName", "Test Job");
+data.append("Header", "Test Header");
+data.append("BillingCode", "Customer Code 1234");
+data.append("Numbers0", "99922233333");
+data.append("Files0", fileInput.files[0], "TEST FAX.doc");
+data.append("CSID", "5554442222");
+data.append("ANI", "5554442222");
+data.append("StartDate", "1/1/2019");
+data.append("FaxQuality", "Fine");
+data.append("FeedbackEmail", "test@test.com");
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+    if(this.readyState === 4) {
+    console.log(this.responseText);
+    }
+});
+
+xhr.open("POST", "https://api2.westfax.com/REST/Fax_SendFax/json");
+xhr.setRequestHeader("ContentType", "multipart/form-data");
+
+xhr.send(data);
+            </code></pre>
+        </div>
+
+        <p>
+            Above you can see the Number0 and the Files0 field. This is a single document fax going to one number which is probably a vast majority of the jobs you’ll submit. In some cases though you will want to send multiple document or send to many fax numbers.
+        </p>
+
+        <p>
+            To add additional numbers all one has to do is add more Numbers fields. The same thing in regards to Files field. You can add additional files by iterating the values:
+        </p>
+
+        <div>
+            <pre><code>
+var data = new FormData(); 
+data.append("Username", "test@test.com"); 
+data.append("Password", "test9999"); 
+data.append("Cookies", "false"); 
+data.append("ProductId", "00000000-0000-0000-0000-0000000000"); 
+data.append("JobName", "Test Job"); 
+data.append("Header", "Test Header"); 
+data.append("BillingCode", "Customer Code 1234"); 
+data.append("Numbers0", "9992223333"); 
+data.append("Numbers1", "3335556666"); 
+data.append("Numbers2", "8881114333"); 
+data.append("Files0", fileInput.files[0], "CoverPage.doc"); 
+data.append("Files1", fileInput.files[1], "TEST FAX.doc"); 
+data.append("CSID", "5554442222"); data.append("ANI", "5554442222"); 
+data.append("StartDate", "1/1/2019"); 
+data.append("FaxQuality", "Fine"); data.append("FeedbackEmail", "test@test.com"); 
+
+var xhr = new XMLHttpRequest(); 
+xhr.withCredentials = true; 
+xhr.addEventListener("readystatechange", function() { if(this.readyState === 4) { console.log(this.responseText); } }); 
+
+xhr.open("POST", "https://api2.westfax.com/REST/Fax_SendFax/json"); 
+xhr.setRequestHeader("ContentType", "multipart/form-data"); 
+xhr.send(data);
+            </code></pre>
+        </div>
+
+        <p>
+            The documents will be merged from lowest to highest (Files0 first and then Files1). In this case the cover page will be the first document and the next document is the main page. The fax will be sent to all the numbers in the Numbers[0…3] fields.
+        </p>
+
+        <strong>
+            Additional notes:
+        </strong>
+
+        <p>
+            Having multiple numbers can increase the length of the fax send process. If we dial 4 numbers and one of them is busy we will retry the number based on the dialing strategies we employ. A webhook callback may be delayed in this case. We will return the webhook after all calls are done. At that point you will want to query <strong>Fax_GetFaxDescriptions</strong> or <strong>Fax_GetFaxIdentifiers</strong> to get the status of the job and each individual call.
+        </p>
+
+        <p>
+            If you have any questions please reach out to <a href="mailto:develop@westfax.com">develop@westfax.com</a> or call us at 303-299-9329.
+        </p>
+    </div>
+
+    <span class="text-muted mt-4">
+        April 8, 2020 /
+    </span>
+
+</section>
+
+<partial src="footer.html"></partial>
