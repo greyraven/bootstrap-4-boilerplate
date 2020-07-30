@@ -25,7 +25,8 @@ a.nav-link {
   background-image: url(/img/HIPAA-HEADER-2.jpg);
   background-attachment: scroll;
   background-position: top right;
-  max-height: 530px;
+  max-height: 330px;
+  background-size: cover;
 }
 
 .lead {
@@ -46,7 +47,6 @@ section.pricing {
 
 .pricing .card {
   border: none;
-  border-radius: 1rem;
   transition: all 0.2s;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }
@@ -57,13 +57,13 @@ section.pricing {
 
 .pricing .card-title {
   margin: 0.5rem 0;
-  font-size: 0.9rem;
+  font-size: 1.4rem;
   letter-spacing: 0.1rem;
   font-weight: bold;
 }
 
 .pricing .card-price {
-  font-size: 3rem;
+  font-size: 1rem;
   margin: 0;
 }
 
@@ -85,6 +85,9 @@ section.pricing {
 }
 .subBannerA {
   background-color: #212529;
+}
+.bg-lightgrey{
+  background-color: #666666;
 }
 .white {
   color: #ffffff;
