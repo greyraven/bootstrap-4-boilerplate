@@ -1,0 +1,128 @@
+<partial src="header.html" title="Cloud Fax API use case by example | WestFax API" metadesc="We've seen every use-case one could imagine. With each new customer we learn new ways to use the API. Below are several of the very common use-cases we see all the time and the API calls involved with each. We'll use pseudo-code in our examples to describe workflow."></partial>
+
+<section class="container mx-auto mb-4 mt-4" id="blog-post">
+    <div id="blog-title" class="mb-4">
+        <h1>
+            CLOUD FAX API USE CASE BY EXAMPLE 
+        </h1>
+        <a href="https://westfax.com/category/blog/">BLOG</a>
+    </div>
+
+    <div class="text-muted mb-4">
+        <p>
+            We’ve seen every use-case one could imagine. With each new customer we learn new ways to use the API. Below are several of the very common use-cases we see all the time and the API calls involved with each. We’ll use pseudo-code in our examples to describe workflow.
+        </p>
+
+        <hr>
+
+        <div class="mt-2 mb-2">
+            <h2 class="text-dark">
+                Outbound heavy
+            </h2>
+
+            <p>
+                In this use-case the user sends large numbers of outbound faxes with no need for inbound. For each fax they need to reconcile delivery. If something fails they need to determine the reason why and act accordingly. (Number of API Calls: 2)
+            </p>
+
+            <ol>
+                <li class="m-2">
+                    <strong>
+                        Get faxes ready for send:
+                    </strong>
+                    <ul>
+                        <li>
+                            Generate Content to be faxed (PDF,DOC, HTML, etc…)
+                        </li>
+                        <li>
+                            Generate the API Requests with the Outbound CallbackUrl set (learn more)
+                        </li>
+                    </ul>
+                </li>
+                <li class="m-2">
+                    <strong>
+                        Fax send loop:
+                    </strong>
+                    <ul>
+                        <li>Send requests in a Loop (API Call: <a href="https://apidocs.westfax.com/?version=latest#329863fe-37b7-46b4-bee4-507949664be2">Fax_SendFax</a>)</li>
+                    </ul>
+                </li>
+                <li class="m-2">
+                    <strong>
+                        Wait for Callback:
+                    </strong>
+                    <ul>
+                        <li>
+                            Callback fires and we read the fax identifier from the callback request.
+                        </li>
+                        <li>
+                            Get status using: (API Call: <a href="https://apidocs.westfax.com/?version=latest#2a448185-e072-4810-b9bc-f234c3ef4d9b">Fax_GetFaxDescriptionsUsingIds</a>) using the fax identifier
+                            <ul>
+                                <li>
+                                    [Ok] -> Write to database and mark as complete.
+                                </li>
+                                <li>
+                                    [Failed] -> Write to database for later review or retry.
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <hr>
+
+        <div class="mt-2 mb-2">
+            <h2 class="text-dark">
+                Inbound heavy
+            </h2>
+
+            <p>
+                In this use-case the user receives large numbers of inbound faxes with no need for outbound. They use the inbound webhook to receive notification of new inbound fax. For each fax they receive they will save the fax to a network drive and send an internal email to their users. (Number of API calls: 2)
+            </p>
+
+            <ol>
+                <li class="m-2">
+                    <strong>
+                        Webhook call received with fax identifier.
+                    </strong>
+                </li>
+                <li class="m-2">
+                    <strong>
+                        Get inbound fax information and file.
+                    </strong>
+                    <ul>
+                        <li>
+                            Get information about the fax: (API Call: <a href="https://apidocs.westfax.com/?version=latest#19828d39-d90c-471e-ac89-9f0aae84859a">Fax_GetFaxDocuments</a>) using fax identifier.
+                        </li>
+                    </ul>
+                </li>
+                <li class="m-2">
+                    <strong>
+                        Save fax file
+                    </strong>
+                    <ul>
+                        <li>Decode file using any <a href="https://www.google.com/search?q=base64+decode+functions&oq=base64+decode+functions&aqs=chrome..69i57.4712j0j1&sourceid=chrome&ie=UTF-8">BASE64 Decode function</a> and save as the selected filetype.</li>
+                        <li>
+                            Save file to network location
+                        </li>
+                        <li>
+                            Mark fax as “retrieved”: (API Call: Fax_ChangeFaxFilterValue)
+                        </li>
+                    </ul>
+                </li>
+                <li class="m-2">
+                    <strong>
+                        Notify users of new fax arriving using internal email
+                    </strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <span class="mt-4 text-muted">
+        April 13, 2020 /
+    </span>
+</section>
+
+<partial src="footer.html"></partial>
