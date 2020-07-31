@@ -11,8 +11,9 @@
   },
   "scripts": {
     "start": "gulp",
-    "dev": "gulp serve",
-    "prod": "cross-env NODE_ENV=prod gulp"
+    "serve": "gulp serve",
+    "dev": "cross-env NODE_ENV=dev gulp",
+    "prod": "cross-env NODE_ENV=dev gulp"
   },
   "devDependencies": {
     "bootstrap": "^4.4.1",

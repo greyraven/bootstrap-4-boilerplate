@@ -5,6 +5,9 @@ $theme-colors: (
 
 @import "node_modules/bootstrap/scss/bootstrap";
 
+html{
+  scroll-behavior: smooth
+}
 body {
   font-family: "Open Sans", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -256,8 +259,14 @@ footer a {
   background-image: url("/img/create-bf-account-banner-img.jpg");
 }
 
-#developer-registration-jumbotron {
-  background-image: url("/img/developer-registration-banner-bg.jpg");
+#developer-registration-jumbotron, #api_landing {
+  background-color: #000000;
+  background-image: url("/img/bgCode_1.jpg");
+
+}
+#api_landing{
+min-height: 300px;
+
 }
 
 #fax-to-email-jumbotron {
@@ -297,6 +306,8 @@ footer a {
   height: auto;
   li {
     font-size: 20px;
+    line-height: 1.5em;
+    padding: 10px 0;
   }
 }
 
