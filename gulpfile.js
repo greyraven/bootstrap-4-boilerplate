@@ -68,6 +68,13 @@ function img() {
     .pipe(gulp.dest("docs/img/"));
 }
 
+function downloads() {
+  return gulp
+    .src("src/downloads/*")
+
+    .pipe(gulp.dest("docs/downloads/"));
+}
+
 function serve() {
   browserSync.init({
     open: true,
@@ -97,5 +104,6 @@ exports.css = css;
 exports.html = html;
 exports.js = js;
 exports.del = del;
-exports.serve = gulp.parallel(html, css, js, img, watchFiles, serve);
-exports.default = gulp.series(del, html, css, js, img);
+exports.downloads = downloads;
+exports.serve = gulp.parallel(html, css, js, img, downloads, watchFiles, serve);
+exports.default = gulp.series(del, html, css, js, img, downloads);

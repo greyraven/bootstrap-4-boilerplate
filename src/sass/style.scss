@@ -14,6 +14,11 @@ body {
     max-width: 1310px !important;
   }
 }
+blockquote{
+font-style: italic;
+border-bottom: 1px dotted #cccccc;
+padding-bottom: 20px;
+}
 .navbar {
   border-bottom: 1px solid #eee;
   font-weight: bold;
@@ -53,45 +58,48 @@ a.nav-link {
 
 /* Pricing Tables */
 
-.pricing .card{
+.pricing .card,.pricingH .card {
   transition: all 0.2s;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }
-.pricing .card-top{
+.pricing .card-top,.pricingH .card-top{
   background:#222222;
   color:#FFF;
   text-align:center;
 }
-.pricing .card-top h2{
+.pricing .card-top h2,.pricingH .card-top h2{
   font-size:20px;
   font-weight:bold;
 }
-.pricing .card-mid{
+.pricing .card-mid,.pricingH .card-mid{
   background:#555555;
     background: linear-gradient(to bottom, #555555, #111111);
-
   color:#FFF;
   text-align:center;
 }
-.pricing .card-mid h5{
+.pricing .card-mid h5,.pricingH .card-mid h5{
   font-size:12px;
 }
 .pricing .card-mid h2{
   font-size:40px;
   font-weight:bold;
 }
-.pricing .card-mid .red{
+.pricing .card-mid h3{
+  font-size:32px;
+  font-weight:bold;
+}
+.pricing .card-mid .red,.pricingH .card-mid .red{
   padding-top:10px;
   color: #b4232d;
   text-transform:uppercase;
   font-weight:bold;
 }
-.pricing .card-body{
+.pricing .card-body,.pricingH .card-body{
   text-align:center;
   font-size:14px;
 }
 @media (min-width: 576px){
-.pricing .card-deck {
+.pricing .card-deck,.pricingH .card-deck {
     display: contents;
     flex-flow: row wrap;
     margin-right: -15px;
@@ -258,6 +266,7 @@ footer a {
 
 #our-company-jumbotron {
   background-image: url("/img/bluesky1-1.jpeg");
+  
 }
 
 #our-network-jumbotron {
