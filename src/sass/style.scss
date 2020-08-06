@@ -1,21 +1,38 @@
 $theme-colors: (
   "primary": #b4232d,
-  "dark": #000000
+  "dark": #000000,
+  "danger": #b4232d
 );
-
+// Internet Explorer 10+ only
+@mixin ie-only() {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}
 @import "node_modules/bootstrap/scss/bootstrap";
 
 html{
   scroll-behavior: smooth
 }
 body {
-  font-family: "Open Sans", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans','HelveticaNeue','Helvetica Neue',Helvetica,Arial,sans-serif;
+  padding-top:90px;
+}
+h1, h2, h3, h4, h5, h6, #top .title_container .main-title{
+    font-family: 'Lato','HelveticaNeue','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 
+.heavy{
+font-weight: 700 !important;
+}
 @media (min-width: 1200px){
 .container, .container-sm, .container-md, .container-lg, .container-xl {
     max-width: 1310px !important;
   }
+}
+
+.shadow{
+  text-shadow: 2px 2px 4px #000000;
 }
 blockquote{
 font-style: italic;
@@ -64,7 +81,10 @@ a.nav-link {
 .pricing .card,.pricingH .card {
   transition: all 0.2s;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-}
+  @include ie-only() {
+    display: inline-table;
+   }
+  }
 .pricing .card-top,.pricingH .card-top{
   background:#222222;
   color:#FFF;
@@ -104,6 +124,9 @@ a.nav-link {
 @media (min-width: 576px){
 .pricing .card-deck,.pricingH .card-deck {
     display: contents;
+    @include ie-only() {
+      display: inline !important;
+     }
     flex-flow: row wrap;
     margin-right: -15px;
     margin-left: -15px;
@@ -208,7 +231,32 @@ margin-left:88%;
   }
 }
 
+/*Tech SlideShow*/
+.tech-slideshow {
+height: 75px;
+    max-width: 7077px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0,0,0);
+}
+.tech-slideshow .mover-1 {
+  animation: moveSlideshow 120s linear infinite;
+}
+.tech-slideshow>div {
+  height: 75px;
+  width: 7077px;
+  background: url(/img/Logo_scroll_2x.jpg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transform: translate3d(0,0,0);
+}
 
+#faq-list > li{
+  padding-bottom:20px !important;
+}
 /*FOOTER*/
 footer a {
   color: #ffffff !important;
@@ -244,7 +292,7 @@ footer a {
 }
 
 #broadcast-fax-jumbotron {
-  background-image: url("/img/broadcast-fax-logo-bg.png");
+  background-image: url("/img/broadcast_bg.png");
 }
 
 #broadcast-fax-signup-jumbotron {
@@ -275,7 +323,9 @@ min-height: 300px;
 
 #our-company-jumbotron {
   background-image: url("/img/bluesky1-1.jpeg");
-  
+  background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top left;
 }
 
 #our-network-jumbotron {
