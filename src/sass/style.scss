@@ -22,16 +22,41 @@ h1, h2, h3, h4, h5, h6, #top .title_container .main-title{
     font-family: 'Lato','HelveticaNeue','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 
+.navbar-nav .dropdown-menu {
+  background: #EEEEEE !important;
+}
 .ie100{
   width:100%;
 }
 .heavy{
 font-weight: 700 !important;
 }
-@media (min-width: 1200px){
+/*@media (min-width: 1200px){
 .container, .container-sm, .container-md, .container-lg, .container-xl {
     max-width: 1310px !important;
   }
+}
+*/
+/* blog */
+
+#blog-title > h1{
+  font-size:2em;
+}
+#blog-post > div.text-muted > p,#blog-post > div.text-muted > strong{
+font-size: 1.5em;
+}
+.blog-preview > a.text-primary > h5{
+font-weight: bold;
+font-size:1.1em;
+}
+
+.dotted-border{
+  border-bottom: 1px dotted #cccccc;
+  padding-bottom:50px;
+}
+
+.blog-preview{
+  font-size:1.3em;
 }
 
 .shadow{
@@ -43,9 +68,10 @@ border-bottom: 1px dotted #cccccc;
 padding-bottom: 20px;
 }
 .navbar {
-  border-bottom: 1px solid #eee;
   font-weight: bold;
+  font-size:20px;
   color: #111111;
+
 }
 a.nav-link {
   color: #111111;
@@ -79,6 +105,13 @@ a.nav-link {
   font-size: 20px;
 }
 
+/*api quickstart section*/
+.list-group {
+  display: table;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+}
 /* Pricing Tables */
 
 .pricing .card,.pricingH .card {
@@ -111,8 +144,11 @@ a.nav-link {
   font-weight:bold;
 }
 .pricing .card-mid h3{
-  font-size:32px;
+  font-size:28px;
   font-weight:bold;
+}
+.pricing hr{
+margin:5px !important;
 }
 .pricing .card-mid .red,.pricingH .card-mid .red{
   padding-top:10px;
@@ -123,6 +159,9 @@ a.nav-link {
 .pricing .card-body,.pricingH .card-body{
   text-align:center;
   font-size:14px;
+}
+.btn-signup{
+font-size:1em !important;
 }
 @media (min-width: 576px){
 .pricing .card-deck,.pricingH .card-deck {
@@ -187,6 +226,13 @@ margin-left:88%;
 /*VIDEO ON HOMEPAGE */
 .vidBox {
   position: relative;
+  @include ie-only() {
+    background-repeat: no-repeat !important;
+    background-image: url('/img/background_ie.png') !important;
+    background-attachment: scroll !important;
+    background-position: top left !important;  
+    background-size: cover;
+   }
   background-color: black;
   height: 380px;
   min-height: 25rem;
@@ -227,10 +273,14 @@ margin-left:88%;
 
 @media (pointer: coarse) and (hover: none) {
   .vidBox {
-    background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+    background-repeat: no-repeat !important;
+    background-image: url('/img/background_ie.png') !important;
+    background-attachment: scroll !important;
+    background-position: top left !important;  
+    background-size:cover;
   }
   .vidBox video {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -299,15 +349,15 @@ footer a {
 }
 
 #broadcast-fax-signup-jumbotron {
-  background-image: url("/img/broadcast-fax-signup-banner.png");
+  background-image: url("/img/bluesky1-1.jpeg");
 }
 
 #contact-us-jumbotron {
-  background-image: url("/img/contact-us_bg-img.jpg");
+  background-image: url("/img/phoneBG.jpg");
 }
 
 #cbf-jumbotron {
-  background-image: url("/img/create-bf-account-banner-img.jpg");
+  background-image: url("/img/bluesky1-1.jpeg");
 }
 
 #developer-registration-jumbotron, #api_landing {
@@ -401,6 +451,7 @@ marquee {
     position: relative;
     right: 20%;
   }
+  width: 1140px;
 }
 
 #blog-post {
