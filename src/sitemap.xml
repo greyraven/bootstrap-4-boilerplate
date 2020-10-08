@@ -6,7 +6,7 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
   <loc>https://westfax.com/</loc>
-  <lastmod>2020-08-06T23:54:14+00:00</lastmod>
+  <lastmod>2020-10-01T09:55:14+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
@@ -145,6 +145,11 @@
   <priority>0.64</priority>
 </url>
 <url>
+<loc>https://westfax.com/is-your-fax-hipaa-compliant/</loc>
+<lastmod>2020-08-25T23:03:03+00:00</lastmod>
+<priority>0.65</priority>
+</url>
+<url>
   <loc>https://westfax.com/api-parameters-and-return-values-decoded/</loc>
   <lastmod>2020-08-06T23:54:09+00:00</lastmod>
   <priority>0.64</priority>
@@ -152,6 +157,11 @@
 <url>
   <loc>https://westfax.com/how-to-add-the-westfax-api-into-your-enterprise-application/</loc>
   <lastmod>2020-08-06T23:54:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://westfax.com/what-is-a-baa/</loc>
+  <lastmod>2020-09-01T14:54:13+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
@@ -278,6 +288,11 @@
   <loc>https://westfax.com/5-benefits-of-cloud-fax-for-medical-offices/</loc>
   <lastmod>2020-08-06T23:54:09+00:00</lastmod>
   <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://westfax.com/westfax-vs-twilio-hipaa-fax/</loc>
+  <lastmod>2020-10-07T12:53:02+00:00</lastmod>
+  <priority>0.79</priority>
 </url>
 <url>
   <loc>https://westfax.com/digitalnomads/</loc>

@@ -7,15 +7,30 @@
   </video>
   <div class="container text-center align-items-center p-0">
     <div class="row pt-4 mt-4">
-      <div class="col text-left"><a href="/hipaa_details/"><img src="/img/secure_hipaa_block-2.png" alt="Secure Enterprise Grade API for Healthcare"></a></div>
+      <div class="col text-left"><a href="/hipaa_details/"><img src="/img/secure_hipaa_block.png" alt="Secure Enterprise Grade API for Healthcare"></a></div>
       <div class="col"><a href="/pricing/"><img src="/img/fax_box.png" alt="Fax to Email / Mobile Apps"></a></div>
       <div class="col text-right"><a href="/broadcast-fax/"><img src="/img/broadcast_box.png" alt="Broadcast Fax"></a></div>
     </div>
   </div>
 </div>
-
 <section class="container text-center mt-4 mb-4">
   <h1 class="display-3 mt-2 mb-2 heavy"><strong>WE KNOW FAX!</strong></h1>
+  </section>
+
+<partial src="knowshipaa.html"></partial>
+
+<section class="container-fluid bg-light mx-4">
+  <div class="container" style="padding-top:100px;">
+    <div class="row pt-5">
+      <div class="col-6"><h2 class="mt-2 font-weight-bold" style="font-size: 40px;">See how providers utilize HIPAA cloud fax with WestFax.</h2>
+      <p class="mt-5"><span class="font-weight-bold lead">Dr Taylor Pollei MD</span><br>is a board certified facial plastic surgeon in Mission Viejo and Irvine California. His practice uses the WestFax HIPAA compliant fax service to transmit ePHI using the WestFax desktop solution, the WestFax print driver and the WestFax mobile app. In this video testimonial Dr Pollei describes how WestFax makes HIPAA compliant fax easy and user friendly.<br><a href="#" data-toggle="modal" data-target="#videoModal" class="font-weight-bold mt-1">Watch Now</a></p></div>
+      <div class="col-6"><img src="/img/DTP.png"  style="cursor: pointer;"  data-toggle="modal" data-target="#videoModal" class="img-fluid" /></div>
+    </div>
+  </div>
+</section>
+<partial src="allfaxhave.html"></partial>
+
+<section class="container text-center mt-4 mb-4">
   <hr>
   <marquee behavior="scroll" direction="left">
     <img src="/img/Logo_scroll_2x.jpg" width="7077" height="75"
@@ -42,7 +57,6 @@
 
   </div>
 </section>
-
 <section class="mt-4 mb-4">
   <div class="container d-flex flex-wrap align-items-center justify-content-around">
     <div class="p-2">
@@ -67,6 +81,28 @@
     </div>
   </div>
 </section>
+<!-- Modal -->
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog-centered modal-dialog modal-xl" role="document" style="max-width: 60%;">
+    <div class="modal-content">
+      <!--<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>-->
+      <div class="modal-body">
+        <video width="100%" poster="/img/video_thumb_play.png" controls>
+          <source src="/img/WF_testaimonial_1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary align-content-center text-center align-items-center" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   $(document).ready(function () {
     setInterval(function () {
@@ -80,5 +116,12 @@
       });
     }, 6000);
   });
+  $(document).ready(function(){
+          $('#videoModal').modal({
+              show: false
+          }).on('hidden.bs.modal', function(){
+              $(this).find('video')[0].pause();
+          });
+        });
 </script>
 <partial src="footer.html"></partial>
