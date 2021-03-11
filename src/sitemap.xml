@@ -190,8 +190,23 @@
   <priority>0.64</priority>
 </url>
 <url>
+  <loc>https://westfax.com/6-reasons-to-switch-to-hipaa-cloud-fax/</loc>
+  <lastmod>2021-01-21T14:54:09+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://westfax.com/how-to-use-the-new-print-driver/</loc>
+  <lastmod>2021-02-25T14:54:09+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>https://westfax.com/call-status-and-job-status/</loc>
   <lastmod>2020-08-06T23:54:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://westfax.com/fax-confidentiality-statements/</loc>
+  <lastmod>2020-11-03T13:22:09+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
@@ -202,6 +217,11 @@
 <url>
   <loc>https://westfax.com/number-files/</loc>
   <lastmod>2020-08-06T23:54:15+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://westfax.com/right-fax-alternative/</loc>
+  <lastmod>2020-11-30T21:55:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
@@ -290,11 +310,6 @@
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://westfax.com/westfax-vs-twilio-hipaa-fax/</loc>
-  <lastmod>2020-10-07T12:53:02+00:00</lastmod>
-  <priority>0.79</priority>
-</url>
-<url>
   <loc>https://westfax.com/digitalnomads/</loc>
   <lastmod>2020-08-06T23:54:11+00:00</lastmod>
   <priority>0.64</priority>
@@ -344,6 +359,14 @@
   <lastmod>2020-08-06T23:54:12+00:00</lastmod>
   <priority>0.51</priority>
 </url>
-
-
+<url>
+<loc>https://westfax.com/twilio-to-westfax/</loc>
+  <lastmod>2021-03-03T12:54:12+00:00</lastmod>
+  <priority>0.61</priority>
+</url>
+<url>
+<loc>https://westfax.com/how-to-send-fax-with-mfp/</loc>
+  <lastmod>2021-03-04T12:33:12+00:00</lastmod>
+  <priority>0.61</priority>
+</url>
 </urlset>
