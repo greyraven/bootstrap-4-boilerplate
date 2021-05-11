@@ -1,0 +1,230 @@
+<partial src="headerSoc.html" title="Move from Twilio Fax API to WestFax API" metadesc="Twilio Programmable Fax is set to sunset in December 2021. We will show you how to get your fax api converted from twilio to Westfax. In this how-to we will show you how to send a fax via the WestFax HIPAA Compliant fax api in 15 minutes or less." g_title="How to move from Twilio Fax API to WestFax API in 15 minutes or less | WestFax" g_metadesc="Twilio Programmable Fax is set to sunset in December 2021. We will show you how to get your fax api converted from twilio to Westfax. In this how-to we will show you how to send a fax via the WestFax HIPAA Compliant fax api in 15 minutes or less." g_image="https://westfax.com/img/twiliotowf.png"  fb_title="How to move from Twilio Fax API to WestFax API in 15 minutes or less | WestFax" fb_metadesc="Twilio Programmable Fax is set to sunset in December 2021. We will show you how to get your fax api converted from twilio to Westfax. In this how-to we will show you how to send a fax via the WestFax HIPAA Compliant fax api in 15 minutes or less." fb_image="https://westfax.com/img/twiliotowf.png"  twitter_title="How to move from Twilio Fax API to WestFax API in 15 minutes or less | WestFax" twitter_metadesc="Twilio Programmable Fax is set to sunset in December 2021. We will show you how to get your fax api converted from twilio to Westfax. In this how-to we will show you how to send a fax via the WestFax HIPAA Compliant fax api in 15 minutes or less." twitter_image="https://westfax.com/img/twiliotowf.png" cano="twilio-to-westfax"></partial>
+<style>p{
+font-size:1em !important;
+}</style>
+<section class="container mx-auto mb-4 mt-4" id="blog-post">
+    <div class="mb-4" id="blog-title">
+        <h1>Migrating from Twilio Programmable Fax API to WestFax Fax API the easy way.
+      </h1>
+        
+    </div>
+
+    <div class="text-muted">
+      <img class="img-fluid ml-2 mb-1 float-right" style="width:300px;" src="/img/twiliotowf.png" alt="Print to Fax">
+        <p>
+         If you are a Twilio customer and utilized their fax api you have surely been notified that as of December 2021 they are sunsetting their Programmable Fax API service. 
+<br><br>
+         We want to make transitioning as painless as possible so we created this simple guide to get you up and running immediately. 
+         <br><br> 
+         This article makes certain assumptions. We assume you are a developer or engineer that has a basic understanding of RESTFul API’s and integrations. 
+         <br><br>
+         First, get a <a href="https://signup.westfax.com/app/signup/start?code=Basic%20Plan" target="_blank">WestFax Account</a>. We have a Free 10-day trial you use to get started. Once you get your account you will have your username and password. We’ll use this to get your API key (ProductId).
+         <br><br>
+         Next, <a href="https://apidocs.westfax.com/?version=latest" target="_blank">Load up the documentation in Postman</a> (It’s free and a great development tool). <a href="https://apidocs.westfax.com/?version=latest" target="_blank">Here is a link</a> to our documentation. <br> Just click <strong>“Run in Postman”</strong> in the top right corner. 
+         <br><br>
+         <img src="https://westfax.com/img/twilio_1.png" style="max-width:800px" alt="API Documentation"/>
+         <br><br>
+         The WestFax Collection will be displayed on the left hand side:
+         <br><br>
+         <img src="https://westfax.com/img/Twilio_2.png" style="max-width:400px" alt="API Documentation"/>
+         <br>
+
+         Make sure in the environment variables are set. In the top right corner
+         <br><br>
+         Click on the Eyeball and you should see some default settings.
+         
+         <br><br>
+         <img src="https://westfax.com/img/Twilio_4.png" style="max-width:800px;border:1px solid #333333;" alt="API Documentation"/>
+         <br><br>
+
+         Click “Edit” in the top right corner. You can now add some settings here. 
+         <br><br>
+         <img src="https://westfax.com/img/Twilio_5.png" style="max-width:800px;border:1px solid #333333;" alt="API Documentation"/>
+         <br><br>
+
+         
+         Set the <strong><em>User</em></strong> and <strong><em>Pass</em></strong> to the login and password you set when you created an account.
+         <br><br>
+         We’ll set the ProductId after we retrieve it from the API. Ok, The settings panel should look like this. Hit save in the top right corner.       
+         <br><br>
+         <img src="https://westfax.com/img/Twilio_3.png" style="max-width:800px;border:1px solid #333333;" alt="API Documentation">
+         <br><br>
+         Ok, Now let’s go explore the API calls. Breakdown the list on the left under WestFax.API. It should look like this:
+         <br><br>
+         <img src="https://westfax.com/img/Twilio_6.png" style="max-width:800px;border:1px solid #333333;" alt="API Documentation"/>
+
+         <br><br>
+         You want to doubleclick <code><strong>Profile_GetF2EProductList - Fax to Email only</strong></code>.
+<br><br>
+         You should see the call open up in the main editor and it will look like this:
+        <br><br>
+        <img src="https://westfax.com/img/Twilio_7.png" style="max-width:800px;border:1px solid #333333;" alt="API Documentation"/>
+<br><br> 
+         Click the Body text with the green dot next to it.
+         <br><br>
+         <img src="https://westfax.com/img/Twilio_8.png" style="max-width:800px;border:1px solid #333333;" alt="API Documentation"/>
+
+         <br><br>
+         You will see the template strings <code><strong>{{User}}</strong></code> and <code><strong>{{Pass}}</strong></code>. These are just placeholders for your credentials you entered earlier into the environment variables. 
+         <br><br>
+         Now assuming you set your username and password correctly. You should now hit <kbd>SEND</kbd> on the top right.
+         The output should look something like this:<br>
+         <pre><code>
+         {
+            "Success": true,
+            "Result": [
+              {
+                    <strong>"Id": "111111-1111-1111-1111-1111111111",</strong>
+                    "Name": "YourAccountName",
+                    "PlanId": "111111-1111-1111-1111-1111111111",
+                    "ProductType": "FaxForward",
+                    <strong>"InboundNumber": "88885551212",</strong>
+                    "TimeZone": "Pacific",
+                    "ProductState": "OK",
+                    "CurrentBillingPeriodStart": "2021-03-01T00:00:00Z",
+                    "CurrentBillingPeriodEnd": "2021-04-01T00:00:00Z",
+                    "FreeTrialEnd": "2020-10-08T23:59:59Z",
+                    "PeriodicQuantity": 0,
+                    "QuantityInbound": 0,
+                    "QuantityOutbound": 0
+                }
+            ]
+         }
+      </code>
+      </pre>             
+   </p>
+   <p>
+      You need to copy and paste the <strong><em>Id</em></strong> value into your <strong><em>ProductId</em></strong> Environment variables like we did above. You should also make a note of your fax number because you’ll need it later. <br>After you do that it should look like this:
+      <br><br>
+      <img src="https://westfax.com/img/Twilio_9.png" style="max-width:800px;border:1px solid #333333;" alt="API Documentation"/>
+<br><br>
+      Now we can start sending a fax. For this you will need a test document. We have <a href="/downloads/WestFax-TestFax.pdf" target="_blank">one here</a> you can use. 
+      <br><br>
+
+      Let’s go open the API called named: <strong>Fax_SendFax</strong>.<br>
+      When you click on <kbd>BODY</kbd> it will look similar to this:<br><br>
+      <img src="https://westfax.com/img/Twilio_10.png" style="max-width:800px;border:1px solid #333333;" alt="API Documentation"/>
+<br><br>
+      You can see here that there are three fields that are already set: <strong><em>User, Pass</em></strong> and <strong><em>ProductId</em></strong>. Other fields you can put into a template could be <strong><em>CSID</em></strong> and <strong><em>ANI</em></strong> which should be set to your fax number. You can also set the <strong><em>FeedbackEmail</em></strong> to your email address so you get a notification when the fax is sent. The <strong><em>CallBackUrl</em></strong> is a special formatted field that we discuss in this article. For now you should Uncheck <strong><em>CallBackUrl</em></strong>. 
+<br><br>
+      We’ll discuss each Parameter here. Red fields are required
+      <br><br>
+      <strong style="color:red;">Username: </strong>This is your login. We set this in the environment variables.
+      <br><br>
+      <strong style="color:red">Password: </strong>This is your password. We set this in the environment variables.
+      <br><br>
+      <strong style="color:red">Cookies:</strong> You can leave this false.
+      <br><br>
+      <strong style="color:red">ProductId:</strong> This is your ProductId (APIKey). Each fax line has a different ProductId so if you have many fax lines you will want to change this out as needed.
+      <br><br>
+      <strong>JobName: </strong>This is an internal field. It can be seen in certain reports. Optional
+      <br><br>
+      <strong>Header:</strong> This is the Header of your fax document. It is what is seen on the top of the fax. Optional
+      <br><br>
+      <strong>BillingCode: </strong>This is an internal field. It can be seen in certain reports. Optional
+      <br><br>
+      <strong style="color:red">Numbers1:</strong>This is the number we are going to fax to. You must have at least one fax number. Format: nnnnnnnnnn.
+      <br><br>
+      <strong>Numbers2:</strong> If you are calling more than one number you can iterate on the Numbers field (i.e. Numbers3...Numbers999). Uncheck this if you aren’t using it. Optional. 
+      <br><br>
+      <strong style="color:red">Files0:</strong> This is the first file. If you have additional files you can use an iterator (Files0...Files999). 
+      <br><br>
+      <strong>CSID: </strong>This is your CallerID. Usually one would use their fax number or company name. Optional
+      <br><br>
+      <strong style="color:red">ANI:</strong> This is your internal fax number. Use ########## format (i.e. 8885551212).
+      <br><br>
+      <strong style="color:red">StartDate: </strong>This should be set to the past to send now. Otherwise you can set it to a future date to send in the future. 
+      <br><br>
+      <strong style="color:red">FaxQuality:</strong> Fine or Normal
+      <br><br>
+      <strong>FeedbackEmail:</strong>This is an email address to get a return receipt. Uncheck it if you aren’t using it. Optional
+      <br><br>
+      <strong>CallbackUrl:</strong> This is a callback link. See our article about callbacks here. Uncheck if you aren’t using it. Optional
+      <br><br>
+      
+      Ok, so we are going to send a test fax to ourselves. You should replace the <strong><em></em></strong>Numbers0 with your fax number and the <strong><em></em></strong>CSID and <strong><em></em></strong>ANI. Also, be sure to upload a file in the <strong><em></em></strong>Files0 field. We support most file formats. Doc(x), PDF, TIF, JPG, PNG,GIF, etc…
+      <br><br>
+      
+      Here is what your Postman should look like:
+      <br><br>
+            
+      <img src="https://westfax.com/img/Twilio_12.png" style="max-width:800px;border:1px solid #333333;" alt="API Documentation"/>
+<br><br>
+
+      If everything is set correctly you can hit <kbd style="background-color: blue; color:white;">SEND</kbd> in the top right.
+<br><br>
+You will see a result code in json like this:
+<pre><code>
+{
+   "Success": true,
+   "Result": "54686546-a8fe-4b09-9d3b-96cc746fb6c6"
+}
+</code></pre>
+</p>
+<p>
+If you messed up your password or username you will get this. 
+ <pre><code>
+{
+   "Success": false,
+   "ErrorString": "Handler_Failed_",
+   "InfoString": "Authorization_Failed_BadUsernamePassword"
+}</code></pre>
+</p>
+<p>
+You can verify your user/pass by logging into the <a href="https://home.westfax.com">WestFax Home Portal</a> which is your inbox/outbox view on the web.
+<br><br>
+If you get a different error please reach out to us at <a href="mailto:develop@westfax.com">develop@westfax.com </a>and we’ll give you a hand.
+<br><br>
+Ok, you sent a fax! That was easy. Now if you want to generate the code you can use Postmans code feature that will generally give you good clean code. In some cases you may need to tweak it a bit but it’ll get you 90% of the way there. You can generate code by clicking the &lt;/&gt; button on the right side of the postman interface:
+<br>
+<img src="https://westfax.com/img/Twilio_13.png" style="max-width:800px;border:1px solid #333333;" alt="Code Button"/>
+<br><br>
+You will see this dialog pop up. You can toggle between different languages and frameworks:
+<img src="https://westfax.com/img/Twilio_14.png" style="max-width:800px;border:1px solid #333333;" alt="Language chooser" />
+<br><br>
+
+That's it! Should you need any assistance just email us at <a href="mailto:develop@westfax.com">develop@westfax.com</a> or give us a call at 303-299-9329. 
+Happy Faxing!
+<br><br>
+<h4>More articles and quick start guides:</h4>
+<ul>
+   <li><a href="https://westfax.com/how-to-add-the-westfax-api-into-your-enterprise-application/">How to add the WestFax API into your enterprise application</a></li>
+   <li><a href="https://westfax.com/how-to-add-send-a-fax-via-api-with-callback-function/">How to send a fax via API with callback function</a></li>
+   <li><a href="https://westfax.com/how-to-handle-inbound-faxes-and-callbacks/">How to handle inbound faxes and callbacks</a></li>
+   <li><a href="https://westfax.com/new-api-call-for-multiple-lines-inbound-checking/">Checking for new inbound faxes with new function: Fax_GetProductsWithInboundFaxes</a></li>
+   <li><a href="https://westfax.com/cloud-fax-api-use-case-by-example/">Common Use-Case by example. Simple workflow for inbound / outbound</a></li>
+</ul>
+      </p>    </div>
+</section>
+<partial src="footer.html"></partial>
+<script type="application/ld+json">
+{
+   "@context": "http://schema.org/",
+   "@type":"BlogPosting",
+   "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://google.com/article"
+},
+   "headline": "Migrating from Twilio Programmable Fax API to WestFax Fax API the easy way.",
+   "image": [
+       "https://westfax.com/img/twiliotowf.png",
+       "",
+       ""
+],
+   "datePublished": "2021-03-02",
+   "dateModified": "2021-03-02",
+   "author": {
+       "@type": "Organization",
+       "name": "Doug Clayton"
+},
+   "publisher": {
+      "@type": "Organization",
+      "name": "WestFax",
+      "logo": {
+      "@type": "ImageObject",
+      "url": "https://westfax.com/img/WestFax_Logo.png"
+   }
+},
+   "description": "Twilio Programmable Fax is set to sunset in December 2021. We will show you how to get your fax api converted from twilio to Westfax. In this how-to we will show you how to send a fax via the WestFax HIPAA Compliant fax api in 15 minutes or less."
+}
+</script>

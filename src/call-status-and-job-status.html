@@ -1,19 +1,19 @@
-<partial src="header.html" title="How-to: Call Status and Job Status in the API Primer | WestFax API" metadesc="When you send a fax job via the API the statuses you get back could confuse you if you don't know what to look for. Each fax can have multiple destinations. Each destination has it's own status depending on the receivers availability. This article should decode any confusion surrounding Call and job status."></partial>
+<partial src="header.html" title="How-to: Call Status and Job Status in the API Primer | WestFax API" metadesc="When you send a fax job via the API the statuses you get back could confuse you if you don't know what to look for. Each fax can have multiple destinations. Each destination has it's own status depending on the receivers availability. This article should decode any confusion surrounding Call and job status." cano="call-status-and-job-status"></partial>
 
 <section class="container mx-auto mt-4 mb-4" id="blog-post">
     <div class="mb-4" id="blog-title">
         <h1>HOW-TO: CALL STATUS AND JOB STATUS IN THE API PRIMER</h1>
-        <a href="https://westfax.com/category/blog/">BLOG</a>
+        
     </div>
 
     <div class="text-muted">
         <p>This article assumes you:</p>
         <ol>
             <li>
-                <a href="https://westfax.com/developer-registration/">Have an API developer account.</a>
+                <a href="/developer-registration/">Have an API developer account.</a>
             </li>
             <li>
-                <a href="https://westfax.com/how-to-add-send-a-fax-via-api-with-callback-function/">Sent a Fax via the API</a>
+                <a href="/how-to-add-send-a-fax-via-api-with-callback-function/">Sent a Fax via the API</a>
             </li>
         </ol>
 
@@ -191,6 +191,8 @@ echo $response;
                 <br>
                 InvalidNumber // Bad number i.e. 22930-3940-399430A
                 <br>
+                OperatorIntercept // Disconnected number. The Three tones recording.
+                <br>
                 <strong>All possible values of Job Status (Some you will never see. Bold are common Status codes):</strong>
                 <br>
                 <strong>Complete</strong>,  //Job is done. Check call Result for individual fax status.
@@ -218,3 +220,34 @@ echo $response;
 </section>
 
 <partial src="footer.html"></partial>
+<script type="application/ld+json">
+{
+   "@context": "http://schema.org/",
+   "@type":"BlogPosting",
+   "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://google.com/article"
+},
+   "headline": "How-to: Call Status and Job Status in the API Primer | WestFax API",
+   "image": [
+       "",
+       "",
+       ""
+],
+   "datePublished": "2019-05-15",
+   "dateModified": "2020-12-28",
+   "author": {
+       "@type": "Organization",
+       "name": "Doug Clayton"
+},
+   "publisher": {
+      "@type": "Organization",
+      "name": "WestFax",
+      "logo": {
+      "@type": "ImageObject",
+      "url": "https://westfax.com/img/WestFax_Logo.png"
+   }
+},
+   "description": "When you send a fax job via the API the statuses you get back could confuse you if you don't know what to look for. Each fax can have multiple destinations. Each destination has it's own status depending on the receivers availability. This article should decode any confusion surrounding Call and job status."
+}
+</script>

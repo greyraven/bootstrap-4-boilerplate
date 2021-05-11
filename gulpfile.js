@@ -14,6 +14,8 @@ const clean = require("gulp-clean");
 const isProd = process.env.NODE_ENV === "prod";
 
 const htmlFile = ["src/*.html"];
+const siteMapFile = ["src/*.xml"];
+const robotFile = ["src/*.txt"];
 
 function html() {
   return gulp
@@ -31,6 +33,16 @@ function html() {
         })
       )
     )
+    .pipe(gulp.dest("docs"));
+}
+function xml() {
+  return gulp
+    .src(siteMapFile)
+    .pipe(gulp.dest("docs"));
+}
+function robot() {
+  return gulp
+    .src(robotFile)
     .pipe(gulp.dest("docs"));
 }
 
@@ -62,7 +74,17 @@ function js() {
 }
 
 function img() {
-  return gulp.src("src/img/*").pipe(gulpIf(isProd, imagemin())).pipe(gulp.dest("docs/img/"));
+  return gulp
+    .src("src/img/*")
+    .pipe(gulpIf(isProd, imagemin()))
+    .pipe(gulp.dest("docs/img/"));
+}
+
+function downloads() {
+  return gulp
+    .src("src/downloads/*")
+
+    .pipe(gulp.dest("docs/downloads/"));
 }
 
 function serve() {
@@ -94,5 +116,8 @@ exports.css = css;
 exports.html = html;
 exports.js = js;
 exports.del = del;
-exports.serve = gulp.parallel(html, css, js, img, watchFiles, serve);
-exports.default = gulp.series(del, html, css, js, img);
+exports.downloads = downloads;
+exports.serve = gulp.parallel(html, css, js, downloads, watchFiles, serve);
+exports.default = gulp.series(del, html, xml, robot, css, js, downloads);
+//exports.serve = gulp.parallel(html, css, js, img, downloads, watchFiles, serve);
+//exports.default = gulp.series(del, html, xml, robot, css, js, img, downloads);

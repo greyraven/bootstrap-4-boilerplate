@@ -1,0 +1,94 @@
+<partial src="header.html" title="How to use Advanced Flags with Fax to Email | WestFax API" metadesc="If you are a user of Fax to Email you already know how easy it is to send faxes. Once you setup your FaxForward account you just just send an email with an attachment to FAXNUMBER@westfax.com where you replace FAXNUMBER with the ten digit number. i.e. 13035551212@westfax.com." g_title="How to use Advanced Flags with Fax to Email | WestFax API" g_metadesc="If you are a user of Fax to Email you already know how easy it is to send faxes. Once you setup your FaxForward account you just just send an email with an attachment to FAXNUMBER@westfax.com where you replace FAXNUMBER with the ten digit number. i.e. 13035551212@westfax.com."  cano="how-to-use-advanced-flags-with-fax-to-email"></partial>
+
+<section class="container mx-auto mt-4 mb-4" id="blog-post">
+    <div id="blog-title" class="mb-4">
+        <h1>
+            HOW TO USE ADVANCED FLAGS WITH FAX TO EMAIL
+        </h1>
+        
+    </div>
+
+    <div class="text-muted">
+        <p>
+            How to use Advanced flags with <a href="/how-to-send-a-fax-using-gmail/">Fax to Email</a>
+            If you are a user of Fax to Email you already know how easy it is to send faxes. Once you setup your
+            FaxForward account you just just send an email with an attachment to FAXNUMBER@westfax.com where you replace
+            FAXNUMBER with the ten digit number. i.e. 13035551212@westfax.com.
+        </p>
+
+        <p>
+            The Subject of the email becomes the Fax Header and the fax is sent as soon as it’s received.
+        </p>
+
+        <p>
+            There are a few more advanced “commands” you can use to alter the workings of the FaxForward.
+        </p>
+
+        <p>
+            These commands are placed in the Email subject field.
+        </p>
+
+        <p>
+            Here’s a list of the switches and a quick description of their function:
+        </p>
+
+        <ul>
+            <li class="m-2">
+                /d YYYY-MM-DD HH:mm — Date switch, which will change the schedule to the date and time given.
+            </li>
+
+            <li class="m-2">
+                /hn — Header negate – this suppresses the header on the fax entirely.
+            </li>
+
+            <li class="m-2">
+                /h [Header Value] — Use [Header Value] as the header on the fax.
+            </li>
+
+            <li class="m-2">
+                /rs or /rf – Controls resolution. Resolution is Standard (/rs) or fine (/rf)
+            </li>
+
+            <li class="m-2">
+                /at [1 – 10]– Controls transmission attempts (default is 3). Range is 1 – 10. If excluded, the product configuration will be used.
+            </li>
+
+            <li class="m-2">
+                /rti [1 – 30] – Controls retry interval. Value is number of minutes between retries. Range is 1 – 30 minutes. If excluded the product configuration will be used. Default is 5 minutes.
+            </li>
+
+            <li class="m-2">
+                /faxbody – Fax on the body of the email. The email must be HTML encoded.
+            </li>
+
+            <li class="m-2">
+                /faxattachmentsonly – Ignore the content in the body of the email. Convert and fax only the attachments.
+            </li>
+
+            <li class="m-2">
+                /faxbodyandattachments – Fax both the body and attachment.
+            </li>
+        </ul>
+
+        <p>
+            Here’s an example subject line:
+        </p>
+
+        <p>
+            <strong>
+                /h Therapy Fax /rs /faxattachmentsonly
+            </strong>
+        </p>
+
+        <p>
+            This would yield a fax that has “Therapy Fax” as the job name and header. Only the attachments will be sent, and the attachments will be rendered in standard fax resolution.
+        </p>
+    </div>
+
+    <span class="text-muted">
+        August 21, 2019 /
+    </span>
+
+</section>
+
+<partial src="footer.html"></partial>

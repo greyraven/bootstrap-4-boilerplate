@@ -1,10 +1,8 @@
-<partial src="header.html" title="How to download and save your fax document from the API - WestFax"></partial>
+<partial src="header.html" title="How to download and save your fax document from the API - WestFax" metadesc="This article assumes the following: You have a WestFax API Account. You have some experience sending a fax using the WestFax API. Sending a fax is easy as you may have already discovered, but what about retrieving a fax document for an inbound fax?" g_title="How to download and save your fax document from the API - WestFax" g_metadesc="This article assumes the following: You have a WestFax API Account. You have some experience sending a fax using the WestFax API. Sending a fax is easy as you may have already discovered, but what about retrieving a fax document for an inbound fax?" cano="api-how-to-save-your-fax-document-from-a-base64-object-to-a-pdf"></partial>
 
 <section class="container mx-auto mb-4 mt-4" id="blog-post">
     <div class="mb-4" id="blog-title">
         <h1>API HOW-TO: SAVE YOUR FAX DOCUMENT FROM A BASE64 OBJECT TO A PDF</h1>
-        <!-- Maybe instead of Uncategorized it could be Documentation -->
-        <a href="https://westfax.com/category/uncategorized/" class="text-muted">UNCATEGORIZED</a>
     </div>
 
     <div class="text-muted">
@@ -12,9 +10,9 @@
             This article assumes the following:
         </p>
         <ul>
-            <li>You have a <a href="developer-registration.html">Westfax API Account</a></li>
+            <li>You have a <a href="/developer-registration/">Westfax API Account</a></li>
             <li>
-                You have some experience <a href="how-to-add-send-a-fax-via-api-with-callback-function.html">sending a
+                You have some experience <a href="/how-to-add-send-a-fax-via-api-with-callback-function/">sending a
                     fax using the WestFax API</a>
             </li>
         </ul>
@@ -48,7 +46,7 @@
                 If you have any inbound faxes, you’ll see something like this:
             </p>
 
-            <img width="800px" class="img-fluid mt-2 mb-4" src="img/api-img-1.png" alt="Result Preview Image">
+            <img width="800px" class="img-fluid mt-2 mb-4" src="/img/api-img-1.png" alt="Result Preview Image">
 
             <p>
                 We see two results are returned. Each has an <strong>ID</strong>, <strong>Direction</strong>,
@@ -184,7 +182,7 @@ File.WriteAllBytes(@"c:\directory\yourfile.pdf", Convert.FromBase64String(yourBa
         </div>
         <p class="lead">
             So as one can see, converting to a usable file from base64 data is relatively simple and easy to implement.
-            Please <a href="contact.html">contact us</a> if you have any questions.
+            Please <a href="/contact/">contact us</a> if you have any questions.
         </p>
 
         <span>
@@ -195,3 +193,34 @@ File.WriteAllBytes(@"c:\directory\yourfile.pdf", Convert.FromBase64String(yourBa
 
 
 <partial src="footer.html"></partial>
+<script type="application/ld+json">
+{
+   "@context": "http://schema.org/",
+   "@type":"BlogPosting",
+   "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://google.com/article"
+},
+   "headline": "How to download and save your fax document from the API - WestFax",
+   "image": [
+       "",
+       "",
+       ""
+],
+   "datePublished": "2020-07-15",
+   "dateModified": "2020-12-28",
+   "author": {
+       "@type": "Organization",
+       "name": "Doug Clayton"
+},
+   "publisher": {
+      "@type": "Organization",
+      "name": "WestFax",
+      "logo": {
+      "@type": "ImageObject",
+      "url": "https://westfax.com/img/WestFax_Logo.png"
+   }
+},
+   "description": "This article assumes the following: You have a WestFax API Account. You have some experience sending a fax using the WestFax API. Sending a fax is easy as you may have already discovered, but what about retrieving a fax document for an inbound fax?"
+}
+</script>
