@@ -17,7 +17,7 @@
 <url>
   <loc>https://westfax.com/hipaa_details/</loc>
   <lastmod>2020-08-06T23:54:13+00:00</lastmod>
-  <priority>0.90</priority>
+  <priority>0.95</priority>
 </url>
 <url>
   <loc>https://westfax.com/broadcast-fax/</loc>
@@ -127,6 +127,11 @@
 <url>
   <loc>https://westfax.com/downloads/WestFax-Migration-Overview.pdf</loc>
   <lastmod>2020-08-03T19:21:29+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://westfax.com/important-fax-terminology/</loc>
+  <lastmod>2021-03-12T12:21:29+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
@@ -335,6 +340,11 @@
   <priority>0.64</priority>
 </url>
 <url>
+  <loc>https://westfax.com/going-paperless-sustainability/</loc>
+  <lastmod>2021-03-16T23:54:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>https://westfax.com/fbi-forcing-faxes-foia/</loc>
   <lastmod>2020-08-06T23:54:12+00:00</lastmod>
   <priority>0.64</priority>
@@ -347,6 +357,11 @@
 <url>
   <loc>https://westfax.com/history-fax-not-going-away/</loc>
   <lastmod>2020-08-06T23:54:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://westfax.com/what-does-hipaa-protect/</loc>
+  <lastmod>2021-03-25T12:54:13+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
@@ -365,8 +380,38 @@
   <priority>0.61</priority>
 </url>
 <url>
+<loc>https://westfax.com/cover-page-email-to-fax/</loc>
+  <lastmod>2021-03-18T11:12:12+00:00</lastmod>
+  <priority>0.65</priority>
+</url>
+  <url>
+    <loc>https://westfax.com/8-reasons-your-port-order-rejected/</loc>
+    <lastmod>2021-03-26T09:54:13+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+<url>
 <loc>https://westfax.com/how-to-send-fax-with-mfp/</loc>
   <lastmod>2021-03-04T12:33:12+00:00</lastmod>
   <priority>0.61</priority>
 </url>
+<url>
+  <loc>https://westfax.com/spf-is-required/</loc>
+  <lastmod>2021-04-01T09:34:13+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+    <loc>https://westfax.com/hipaa-office/</loc>
+    <lastmod>2021-04-07T12:54:13+00:00</lastmod>
+    <priority>0.64</priority>
+</url>
+  <url>
+    <loc>https://westfax.com/whats-new-hipaa-2021/</loc>
+    <lastmod>2021-034-14T12:33:32+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+    <url>
+    <loc>https://westfax.com/hipaa-covid-guidelines/</loc>
+    <lastmod>2021-04-28T01:54:13+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
 </urlset>
